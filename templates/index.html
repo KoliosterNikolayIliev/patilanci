@@ -15,5 +15,10 @@
 {% for image in images %}
     <img src="{{ image }}" alt="example">
 {% endfor %}
+
+{% if video %}
+    {{ video|safe }}
+{% endif %}
+
 </body>
 </html>

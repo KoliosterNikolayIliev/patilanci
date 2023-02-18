@@ -1,0 +1,26 @@
+# Byte-compiled files
+__pycache__/
+*.pyc
+
+
+# Media files
+/media/
+
+# Secret keys
+*.secret
+
+# Database files
+*.db
+*.sqlite3
+*.sql
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+
+.idea/
+main/migrations/
+static/

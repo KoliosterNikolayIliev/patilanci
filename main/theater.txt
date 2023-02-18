@@ -1,0 +1,17 @@
+A theater website should have a professional and engaging design that reflects the identity of the theater
+company and provides a user-friendly experience for visitors.
+It should include:
+
+1. Clear navigation and organization to help users find the information they need.
+2. Information about the theater's productions, including show dates, times, and ticket prices.
+3. High-quality images, videos, and other multimedia to showcase the theater's productions and atmosphere.
+4. Information about the theater company, its history, and its mission.
+5. A calendar of events and performances, including information about special events and promotions.
+6. An easy-to-use ticketing system with the ability to purchase tickets online.
+7. A blog or news section with updates on the theater company and its productions.
+8. Contact information, including email, phone, and physical address, as well as links to social media pages.
+9. Accessibility information, including information about special accommodations for disabled patrons.
+
+Overall, a theater website should be visually appealing, informative, and user-friendly,
+making it easy for visitors to learn about the theater company and its productions,
+as well as to purchase tickets and attend performances.

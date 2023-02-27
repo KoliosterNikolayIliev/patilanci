@@ -1,8 +1,10 @@
+import re
+
 from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from .models import Image, Play, Video, Comment, ContactAndInfo, SocialNetwork, Ticket
+from .models import Image, Play, Video, ContactAndInfo, SocialNetwork, LiveVideo
 
 
 @admin.register(Image)
@@ -16,22 +18,29 @@ class ImageAdmin(admin.ModelAdmin):
     list_display = ('image_tag', 'category', 'play', 'carousel', 'date_created')
 
 
-class CommentInline(admin.TabularInline):
-    model = Comment
-    extra = 0
-
-
 @admin.register(Play)
 class PlayAdmin(admin.ModelAdmin):
-    inlines = (CommentInline,)
+    pass
 
 
 @admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
     def video_tag(self, obj):
-        return mark_safe(obj.embedded_video.replace('width="560" height="315"',  'width="224" height="126"'))
+        pattern = r'width="\d+" height="\d+"'
+        return mark_safe(re.sub(pattern, 'width="224" height="126"', obj.embedded_video))
 
     video_tag.short_description = 'Video'
+
+    list_display = ('video_tag', 'name', 'description', 'play')
+
+
+@admin.register(LiveVideo)
+class LiveVideoAdmin(admin.ModelAdmin):
+    def video_tag(self, obj):
+        pattern = r'width="\d+" height="\d+"'
+        return mark_safe(re.sub(pattern, 'width="672" height="378"', obj.embedded_video))
+
+    video_tag.short_description = 'Live video'
 
     list_display = ('video_tag', 'name', 'description', 'play')
 
@@ -39,6 +48,7 @@ class VideoAdmin(admin.ModelAdmin):
 class SocialNetworkInline(admin.TabularInline):
     model = SocialNetwork
     extra = 0
+
 
 @admin.register(ContactAndInfo)
 class ContactAndInfoAdmin(admin.ModelAdmin):
@@ -48,8 +58,3 @@ class ContactAndInfoAdmin(admin.ModelAdmin):
         if ContactAndInfo.objects.count() > 0:
             return False
         return True
-
-
-@admin.register(Ticket)
-class TicketAdmin(admin.ModelAdmin):
-    pass

@@ -1,7 +1,12 @@
 from django.conf.global_settings import MEDIA_URL
 from django.shortcuts import render
-
+from rest_framework import status, permissions
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
 from main.models import Image, Video
+from rest_framework import generics
+from main.serializers import ImageSerializer
+
 # def some_view(request):
 #     images = Image.objects.all()
 #     images = [x.image_file.url for x in images]
@@ -24,3 +29,8 @@ class IndexView(TemplateView):
             {'image': '/media/images/test_results_XU7YuY4.jpg', 'caption': 'Caption 3'},
         ]
         return context
+
+
+class CarouselAPIView(generics.ListAPIView):
+    queryset = Image.objects.all()
+    serializer_class = ImageSerializer

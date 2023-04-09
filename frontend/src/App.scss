@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  //height:100vh;
+  flex-wrap: wrap;
+}
+
+.main-container{
+
+}
+
+.carousel-image{
+    height:54em;
+    object-fit: cover !important;
+}
+
+
+//.footer{
+//  z-index: 1;
+//}

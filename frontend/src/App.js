@@ -1,13 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
-import ImageComponent from "./components/ImageComponent";
+import './App.scss';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {AppProvider} from "./context/AppContext";
+import CarouselComponent from "./components/CarouselComponent";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import ImageGallery from "./components/ImageGallery";
+import Performances from "./components/Performances";
+import Contacts from "./components/Conatcts";
+import NoPage from "./components/NoPage";
+import VideoGallery from "./components/VideoGallery";
+
 
 function App() {
-  return (
-    <div className="App">
-      <ImageComponent/>
-    </div>
-  );
+    return (
+        <AppProvider>
+            <BrowserRouter basename={''}>
+            <div className="App">
+
+                <Header/>
+                <Routes>
+                    <Route exact path="/" element={<CarouselComponent />} />
+                    <Route exact path="/image-gallery" element={<ImageGallery/>} />
+                    <Route exact path="/video-gallery" element={<VideoGallery/>} />
+                    <Route exact path="/performances" element={<Performances/>} />
+                    <Route exact path="/contacts" element={<Contacts/>} />
+                    <Route path="*" element={<NoPage />} />
+                 </Routes>
+                <Footer/>
+            </div>
+
+            </BrowserRouter >
+        </AppProvider>
+
+    );
 }
 
 export default App;

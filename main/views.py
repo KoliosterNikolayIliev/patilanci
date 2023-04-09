@@ -1,3 +1,5 @@
+from time import sleep
+
 from django.conf.global_settings import MEDIA_URL
 from django.shortcuts import render
 from rest_framework import status, permissions
@@ -32,5 +34,9 @@ class IndexView(TemplateView):
 
 
 class CarouselAPIView(generics.ListAPIView):
-    queryset = Image.objects.all()
+    queryset = Image.objects.filter(carousel=True)
     serializer_class = ImageSerializer
+
+    def get(self, request, *args, **kwargs):
+        sleep(3)
+        return super().get(request, *args, **kwargs)

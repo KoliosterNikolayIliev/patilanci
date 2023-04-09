@@ -18,13 +18,13 @@ function CarouselComponent() {
     if (err) {
         console.log(err)
         //TODO component needed
-        return <div style={{height: '54em'}}>KUR</div>;
+        return <div style={{height: '83vh'}}>KUR</div>;
     }
 
     if (carouselImages === null) {
         return (
             //TODO component needed
-            <div style={{height: '54em'}}>
+            <div style={{height: '83vh'}}>
                 <p>Loading...</p>
             </div>
         );

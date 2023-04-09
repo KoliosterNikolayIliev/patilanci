@@ -1,6 +1,6 @@
 function VideoGallery() {
     return (
-        <div style={{height: '54em'}}>
+        <div style={{height: '83vh'}}>
             <h4>VideoGallery</h4>
         </div>
     );

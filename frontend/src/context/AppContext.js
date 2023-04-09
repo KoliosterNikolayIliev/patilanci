@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, {createContext, useState} from 'react';
 
 // Create language context
 export const AppContext = createContext();
@@ -7,13 +7,21 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [language, setLanguage] = useState('en');
   const [carouselImages, setCarouselImages] = useState(null)
+  const [galleryImages, setGalleryImages] = useState(null);
 
   const changeLanguage = () => {
     setLanguage(prevLanguage => (prevLanguage === 'en' ? 'bg' : 'en'));
   };
 
   return (
-    <AppContext.Provider value={{ language, changeLanguage , carouselImages, setCarouselImages}}>
+    <AppContext.Provider value={{
+      language,
+      changeLanguage ,
+      carouselImages,
+      setCarouselImages,
+      galleryImages,
+      setGalleryImages
+    }}>
       {children}
     </AppContext.Provider>
   );

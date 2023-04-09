@@ -1,9 +1,9 @@
-function Contacts() {
+function Live() {
     return (
         <div style={{height: '83vh'}}>
-            <h4>Contacts</h4>
+            <h4>Live</h4>
         </div>
     );
 }
 
-export default Contacts;
+export default Live;

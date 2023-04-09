@@ -38,5 +38,14 @@ class CarouselAPIView(generics.ListAPIView):
     serializer_class = ImageSerializer
 
     def get(self, request, *args, **kwargs):
-        sleep(3)
+        sleep(1)
+        return super().get(request, *args, **kwargs)
+
+
+class GalleryAPIView(generics.ListAPIView):
+    queryset = Image.objects.all()
+    serializer_class = ImageSerializer
+
+    def get(self, request, *args, **kwargs):
+        sleep(2)
         return super().get(request, *args, **kwargs)

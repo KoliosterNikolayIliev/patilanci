@@ -36,6 +36,9 @@ function Header() {
                         </Nav.Link>
                     </Nav>
                     <Nav>
+                        <Nav.Link as={Link} to={"/live" }>
+                            {language === 'en' ? 'Live' : 'На живо'}
+                        </Nav.Link>
                         <Nav.Link  onClick={changeLanguage}>
                             {language === 'en' ? 'БГ' : 'EN'}
                         </Nav.Link>

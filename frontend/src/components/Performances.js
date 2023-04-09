@@ -1,6 +1,6 @@
 function Performances() {
     return (
-        <div style={{height: '54em'}}>
+        <div style={{height: '83vh'}}>
             <h4>Performances</h4>
         </div>
     );

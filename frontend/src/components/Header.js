@@ -26,10 +26,10 @@ function Header() {
                             {language === 'en' ? 'Home' : 'Начало'}
                         </Nav.Link>
                         <Nav.Link as={Link} to={"/image-gallery" }>
-                            {language === 'en' ? 'Picture Gallery' : 'Галерия'}
+                            {language === 'en' ? 'Images' : 'Галерия'}
                         </Nav.Link>
                         <Nav.Link as={Link} to={"/video-gallery" }>
-                            {language === 'en' ? 'Video Gallery' : 'Видео галерия'}
+                            {language === 'en' ? 'Videos' : 'Видео галерия'}
                         </Nav.Link>
                         <Nav.Link as={Link} to={"/performances" }>
                             {language === 'en' ? 'Performances' : 'Представления'}

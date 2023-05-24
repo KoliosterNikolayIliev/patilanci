@@ -1,7 +1,8 @@
 import Carousel from 'react-bootstrap/Carousel';
 
 function CarouselBase({images}) {
-
+    // ADD PERFORMACE TO SLIDE
+    // console.log(images)
     return (
         <Carousel
             fade
@@ -14,6 +15,10 @@ function CarouselBase({images}) {
                         src={image.image_field_url}
                         alt={`Slide ${index + 1}`}
                     />
+                    <Carousel.Caption>
+                        <h3>{`Slide ${index + 1} label`}</h3>
+                        <p>{`Nulla vitae elit libero, a pharetra augue mollis interdum.`}</p>
+                    </Carousel.Caption>
                 </Carousel.Item>
             ))}
         </Carousel>

@@ -6,10 +6,11 @@ import os
 
 @receiver(post_delete)
 def delete_file(sender, instance, **kwargs):
-    # Get the file path
-    file_path = os.path.join(settings.MEDIA_ROOT, str(instance.image_file))
+    if sender.__name__ == 'Image':
+        # Get the file path
+        file_path = os.path.join(settings.MEDIA_ROOT, str(instance.image_file))
 
-    # Check if the file exists
-    if os.path.isfile(file_path):
-        # Delete the file from the filesystem
-        os.remove(file_path)
+        # Check if the file exists
+        if os.path.isfile(file_path):
+            # Delete the file from the filesystem
+            os.remove(file_path)

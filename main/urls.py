@@ -1,11 +1,13 @@
 from django.urls import path
 
-from main.views import IndexView, CarouselAPIView, GalleryAPIView
+from main.views import IndexView, CarouselAPIView, ImageGalleryAPIView, VideoGalleryAPIView, ContactAPIView
 
 app_name = 'main'
 urlpatterns = [
     path('', IndexView.as_view(), name='home'),
     path('api/carousel', CarouselAPIView.as_view()),
-    path('api/gallery', GalleryAPIView.as_view()),
+    path('api/image_gallery', ImageGalleryAPIView.as_view()),
+    path('api/video_gallery', VideoGalleryAPIView.as_view()),
+    path('api/contact', ContactAPIView.as_view())
 ]
 

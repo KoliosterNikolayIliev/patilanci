@@ -4,11 +4,10 @@ import {AppProvider} from "./context/AppContext";
 import CarouselComponent from "./components/CarouselComponent";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ImageGallery from "./components/ImageGallery";
+import Gallery from "./components/Gallery";
 import Performances from "./components/Performances";
 import Contacts from "./components/Conatcts";
 import NoPage from "./components/NoPage";
-import VideoGallery from "./components/VideoGallery";
 import Live from "./components/Live";
 
 
@@ -22,8 +21,8 @@ function App() {
 
                         <Routes>
                             <Route exact path="/" element={<CarouselComponent/>}/>
-                            <Route exact path="/image-gallery" element={<ImageGallery/>}/>
-                            <Route exact path="/video-gallery" element={<VideoGallery/>}/>
+                            <Route exact path="/image-gallery" element={<Gallery content={'images'}/>}/>
+                            <Route exact path="/video-gallery" element={<Gallery content={'videos'}/>}/>
                             <Route exact path="/performances" element={<Performances/>}/>
                             <Route exact path="/contacts" element={<Contacts/>}/>
                             <Route exact path="/live" element={<Live/>}/>

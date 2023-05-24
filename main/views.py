@@ -1,13 +1,7 @@
 from time import sleep
-
-from django.conf.global_settings import MEDIA_URL
-from django.shortcuts import render
-from rest_framework import status, permissions
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.response import Response
-from main.models import Image, Video
+from main.models import Image, Video, ContactAndInfo
 from rest_framework import generics
-from main.serializers import ImageSerializer
+from main.serializers import ImageSerializer, VideoSerializer, ContactSerializer
 
 # def some_view(request):
 #     images = Image.objects.all()
@@ -42,10 +36,24 @@ class CarouselAPIView(generics.ListAPIView):
         return super().get(request, *args, **kwargs)
 
 
-class GalleryAPIView(generics.ListAPIView):
+class ImageGalleryAPIView(generics.ListAPIView):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
 
-    def get(self, request, *args, **kwargs):
-        sleep(2)
-        return super().get(request, *args, **kwargs)
+    # def get(self, request, *args, **kwargs):
+    #     sleep(2)
+    #     return super().get(request, *args, **kwargs)
+
+
+class VideoGalleryAPIView(generics.ListAPIView):
+    queryset = Video.objects.all()
+    serializer_class = VideoSerializer
+
+    # def get(self, request, *args, **kwargs):
+    #     sleep(2)
+    #     return super().get(request, *args, **kwargs)
+
+
+class ContactAPIView(generics.ListAPIView):
+    queryset = ContactAndInfo.objects.all().prefetch_related('socialnetwork_set')
+    serializer_class = ContactSerializer

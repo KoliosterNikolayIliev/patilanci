@@ -1,8 +1,6 @@
 from django.db import models
-from django.utils.datetime_safe import datetime
 
 
-# todo LIVE !!! DA SE `UEM DOPYLNITELNO
 class Play(models.Model):
     name = models.CharField(max_length=150, blank=False)
     name_bg = models.CharField(max_length=150, blank=False)
@@ -15,39 +13,40 @@ class Play(models.Model):
 
 
 class Image(models.Model):
-    category = models.CharField(max_length=50, blank=False)
+    description = models.CharField(max_length=200, blank=True)
+    description_bg = models.CharField(max_length=200, blank=True)
     play = models.ForeignKey(to=Play, on_delete=models.SET_NULL, blank=True, null=True)
     carousel = models.BooleanField(blank=False, default=False)
     image_file = models.ImageField(upload_to='images/')
     date_created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    play_main_image = models.BooleanField(blank=False, default=False)
+
+    def save(self, *args, **kwargs):
+        if self.play_main_image:
+            Image.objects.exclude(pk=self.pk).update(play_main_image=False)
+        super(Image, self).save(*args, **kwargs)
 
 
-# TODO are there gona be videos without play attached ????
 class Video(models.Model):
-    name = models.CharField(max_length=150, default='Unknown')
     description = models.TextField(null=True, blank=True)
+    description_bg = models.TextField(null=True, blank=True)
     play = models.ForeignKey(to=Play, on_delete=models.SET_NULL, blank=True, null=True)
     embedded_video = models.TextField(blank=False)
     date_created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    play_main_video = models.BooleanField(blank=False, default=False)
 
-    def __str__(self):
-        if self.play.name:
-            return f'{self.name} / {self.play.name}'
-        return self.name
+    def save(self, *args, **kwargs):
+        if self.play_main_video:
+            Video.objects.exclude(pk=self.pk).update(play_main_image=False)
+        super(Video, self).save(*args, **kwargs)
 
 
 class LiveVideo(models.Model):
-    name = models.CharField(max_length=150, default='Unknown')
     description = models.TextField(null=True, blank=True)
+    description_bg = models.TextField(null=True, blank=True)
     play = models.ForeignKey(to=Play, on_delete=models.SET_NULL, blank=True, null=True)
     active = models.BooleanField(default=False)
     embedded_video = models.TextField(blank=False)
-
-
-def __str__(self):
-    if self.play.name:
-        return f'{self.name} / {self.play.name}'
-    return self.name
 
 
 class ContactAndInfo(models.Model):
@@ -58,8 +57,6 @@ class ContactAndInfo(models.Model):
     info_bg = models.TextField(blank=True, null=True)
     about = models.TextField(blank=True, null=True)
     about_bg = models.TextField(blank=True, null=True)
-
-    # TODO - add image about
 
     class Meta:
         verbose_name = 'Contacts and information'
@@ -77,7 +74,3 @@ class SocialNetwork(models.Model):
 
     def __str__(self):
         return self.name
-
-# TODO finish with admin
-# TODO make raw views without css and js with API possibility?
-

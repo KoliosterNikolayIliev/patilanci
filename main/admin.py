@@ -9,13 +9,19 @@ from .models import Image, Play, Video, ContactAndInfo, SocialNetwork, LiveVideo
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
+    list_filter = ('play',)
 
     def image_tag(self, obj):
         return format_html('<img src="{}" width="224"/>'.format(obj.image_file.url))
 
     image_tag.short_description = 'Image'
 
-    list_display = ('image_tag', 'category', 'play', 'carousel', 'date_created')
+    # def play_name(self, obj):
+    #     return obj.play.name
+
+    # play_name.short_description = 'Play'
+
+    list_display = ('image_tag', 'description', 'description_bg', 'play', 'carousel', 'play_main_image', 'date_created')
 
 
 @admin.register(Play)
@@ -25,13 +31,15 @@ class PlayAdmin(admin.ModelAdmin):
 
 @admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
+    list_filter = ('play',)
+
     def video_tag(self, obj):
         pattern = r'width="\d+" height="\d+"'
         return mark_safe(re.sub(pattern, 'width="224" height="126"', obj.embedded_video))
 
     video_tag.short_description = 'Video'
 
-    list_display = ('video_tag', 'name', 'description', 'play')
+    list_display = ('id', 'video_tag', 'description', 'description_bg', 'play', 'play_main_video', 'date_created')
 
 
 @admin.register(LiveVideo)
@@ -42,7 +50,7 @@ class LiveVideoAdmin(admin.ModelAdmin):
 
     video_tag.short_description = 'Live video'
 
-    list_display = ('video_tag', 'name', 'description', 'play')
+    list_display = ('video_tag', 'description', 'description_bg', 'play')
 
 
 class SocialNetworkInline(admin.TabularInline):

@@ -40,7 +40,6 @@ function ContentCard({item, description, playName, playNameBg, descriptionBg, co
     // const style = image?{ width: '18rem', marginTop:'1%'}:{opacity:0}
     const style = {
         width: '18rem',
-        marginTop: '1.8%',
         maxHeight: '18rem'
     }
     return (

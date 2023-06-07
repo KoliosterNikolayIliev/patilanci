@@ -17,16 +17,25 @@
 
 .base_container{
   min-height: 83vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
 }
 
 
 .gallery_container{
+  margin-top: 1%;
+  margin-bottom: 1%;
   display: flex;
   flex-wrap: wrap;
   //margin-left: auto;
   //margin-right: auto;
-  justify-content: space-evenly;
-  //align-items: flex-start;
+  //justify-content: space-between;
+  gap: 1rem;
+  width: 95%;
+
 }
 //.image_gallery_container::after {
 //  content: "";
@@ -79,4 +88,56 @@
 
 .youtube_iframe {
   border-radius: 0.375rem 0.375rem 0 0;
+}
+
+// popup
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: left; /* Add this line to align the text to the left */
+}
+
+.contact-info h2 {
+  text-align: center; /* Align the header to the center */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-info ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-info li {
+  margin-bottom: 10px;
+}
+
+.contact-info strong {
+  margin-right: 5px;
 }

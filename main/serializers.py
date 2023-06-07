@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from main.models import Image, Video, ContactAndInfo, SocialNetwork
+from main.models import Image, Video, ContactAndInfo #SocialNetwork
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -40,15 +40,15 @@ class VideoSerializer(serializers.ModelSerializer):
         return obj.play.name_bg
 
 
-class SocialNetworkSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SocialNetwork
-        fields = ('id', 'name', 'url', 'icon_class')
+# class SocialNetworkSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = SocialNetwork
+#         fields = ('id', 'name', 'url', 'icon_class')
 
 
 class ContactSerializer(serializers.ModelSerializer):
-    socialnetwork_set = SocialNetworkSerializer(many=True)
+    # socialnetwork_set = SocialNetworkSerializer(many=True)
 
     class Meta:
         model = ContactAndInfo
-        fields = ('id', 'phone', 'address', 'address_bg', 'info', 'info_bg', 'about', 'about_bg', 'socialnetwork_set')
+        fields = ('id', 'phone', 'address', 'address_bg', 'info', 'info_bg', 'about', 'about_bg',)

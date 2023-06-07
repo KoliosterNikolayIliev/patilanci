@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from .models import Image, Play, Video, ContactAndInfo, SocialNetwork, LiveVideo
+from .models import Image, Play, Video, ContactAndInfo, LiveVideo  # SocialNetwork
 
 
 @admin.register(Image)
@@ -53,14 +53,14 @@ class LiveVideoAdmin(admin.ModelAdmin):
     list_display = ('video_tag', 'description', 'description_bg', 'play')
 
 
-class SocialNetworkInline(admin.TabularInline):
-    model = SocialNetwork
-    extra = 0
+# class SocialNetworkInline(admin.TabularInline):
+#     model = SocialNetwork
+#     extra = 0
 
 
 @admin.register(ContactAndInfo)
 class ContactAndInfoAdmin(admin.ModelAdmin):
-    inlines = (SocialNetworkInline,)
+    # inlines = (SocialNetworkInline,)
 
     def has_add_permission(self, request):
         if ContactAndInfo.objects.count() > 0:

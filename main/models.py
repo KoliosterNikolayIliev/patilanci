@@ -30,7 +30,7 @@ class Image(models.Model):
 class Video(models.Model):
     description = models.TextField(null=True, blank=True)
     description_bg = models.TextField(null=True, blank=True)
-    play = models.ForeignKey(to=Play, on_delete=models.SET_NULL, blank=True, null=True)
+    play = models.ForeignKey(to=Play, on_delete=models.CASCADE, blank=False, null=False)
     embedded_video = models.TextField(blank=False)
     date_created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     play_main_video = models.BooleanField(blank=False, default=False)
@@ -66,11 +66,11 @@ class ContactAndInfo(models.Model):
         return 'Contact information'
 
 
-class SocialNetwork(models.Model):
-    name = models.CharField(max_length=150, default='Unknown')
-    contact = models.ForeignKey(to=ContactAndInfo, on_delete=models.CASCADE)
-    url = models.URLField()
-    icon_class = models.CharField(max_length=150, blank=True, default=None, null=True)
-
-    def __str__(self):
-        return self.name
+# class SocialNetwork(models.Model):
+#     name = models.CharField(max_length=150, default='Unknown')
+#     contact = models.ForeignKey(to=ContactAndInfo, on_delete=models.CASCADE)
+#     url = models.URLField()
+#     icon_class = models.CharField(max_length=150, blank=True, default=None, null=True)
+#
+#     def __str__(self):
+#         return self.name

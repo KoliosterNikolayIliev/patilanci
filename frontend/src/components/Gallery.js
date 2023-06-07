@@ -14,7 +14,7 @@ function Gallery({content}) {
         axios.get(baseUrl + endpoint)
             .then(response => content === 'images' ? setImages(response.data) : setVideos(response.data))
             .catch(error => setErr(true));
-    }, [setImages, endpoint]);
+    }, [setImages, setVideos, endpoint, content]);
 
     if (err) {
         console.log(err)

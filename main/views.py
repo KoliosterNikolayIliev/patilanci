@@ -55,5 +55,5 @@ class VideoGalleryAPIView(generics.ListAPIView):
 
 
 class ContactAPIView(generics.ListAPIView):
-    queryset = ContactAndInfo.objects.all().prefetch_related('socialnetwork_set')
+    queryset = ContactAndInfo.objects.all()
     serializer_class = ContactSerializer

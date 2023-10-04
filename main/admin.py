@@ -50,7 +50,12 @@ class LiveVideoAdmin(admin.ModelAdmin):
 
     video_tag.short_description = 'Live video'
 
-    list_display = ('video_tag', 'description', 'description_bg', 'play')
+    list_display = ('description', 'description_bg', 'play', 'video_tag')
+
+    def has_add_permission(self, request):
+        if LiveVideo.objects.count() > 0:
+            return False
+        return True
 
 
 # class SocialNetworkInline(admin.TabularInline):
@@ -58,6 +63,7 @@ class LiveVideoAdmin(admin.ModelAdmin):
 #     extra = 0
 
 
+# TODO - maybe this is not needed - can be entered directly on frontend
 @admin.register(ContactAndInfo)
 class ContactAndInfoAdmin(admin.ModelAdmin):
     # inlines = (SocialNetworkInline,)

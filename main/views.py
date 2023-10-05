@@ -14,7 +14,7 @@ import secrets
 
 from django.views.generic import TemplateView
 
-
+# TODO - Not usable template view must be removed from urls
 class IndexView(TemplateView):
     template_name = 'carousel.html'
 
@@ -62,16 +62,18 @@ class ContactAPIView(generics.ListAPIView):
     serializer_class = ContactSerializer
 
 
-# TODO - must be get
-def get_live_stream_link(request):
-    try:
-        live_video = LiveVideo.objects.latest('id')
-        link = live_video.get_live_stream_link()
-        print(link)
-        return JsonResponse({'youtube_link': link})
-
-    except LiveVideo.DoesNotExist:
-        return JsonResponse({'youtube_link': None})
+# # TODO - must be get
+# def get_live_stream_link(request):
+#     try:
+#         live_video = LiveVideo.objects.latest('id')
+#         print(live_video)
+#         link = live_video.get_live_stream_link()
+#         print("the link")
+#         print(link)
+#         return JsonResponse({'youtube_link': link})
+#
+#     except LiveVideo.DoesNotExist:
+#         return JsonResponse({'youtube_link': None})
 
 
 def generate_secret_key(length=50):

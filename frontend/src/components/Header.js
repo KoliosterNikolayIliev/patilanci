@@ -1,3 +1,4 @@
+import siteLogo from '../public/Logo500x500.svg'
 import React, {useContext, useEffect} from 'react';
 import {Navbar, Nav, Container} from 'react-bootstrap';
 import {AppContext} from "../context/AppContext";
@@ -33,9 +34,9 @@ function Header() {
                 <Container>
                     <Navbar.Brand as={Link} to={"/"}>
                         <img
-                            src="https://w7.pngwing.com/pngs/272/4/png-transparent-word-drawing-word-text-logo-signage-thumbnail.png" // Replace with your logo image URL
-                            width="30"
-                            height="30"
+                            src={siteLogo} // Replace with your logo image URL
+                            width="80"
+                            height="80"
                             className="d-inline-block align-top"
                             alt="Logo"
                         />{' '}
@@ -52,7 +53,7 @@ function Header() {
                             {language === 'en' ? 'Videos' : 'Видео галерия'}
                         </Nav.Link>
                         <Nav.Link as={Link} to={"/performances"}>
-                            {language === 'en' ? 'Performances' : 'Представления'}
+                            {language === 'en' ? 'Projects' : 'Проекти'}
                         </Nav.Link>
                     </Nav>
                     <Nav>

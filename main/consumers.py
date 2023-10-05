@@ -30,7 +30,8 @@ class LiveStreamConsumer(AsyncWebsocketConsumer):
 
     # TODO finish this code
     # TODO - How to keep the connection open
-
+    async def base_send(self):
+        super().base_send()
     @sync_to_async
     def get_live_video_data(self):
         try:

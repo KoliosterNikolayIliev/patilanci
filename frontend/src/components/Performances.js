@@ -1,6 +1,6 @@
 function Performances() {
     return (
-        <div style={{height: '83vh'}}>
+        <div className={'inner_main_container'}>
             <h4>Performances</h4>
         </div>
     );

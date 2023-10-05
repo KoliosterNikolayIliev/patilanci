@@ -19,13 +19,13 @@ function Gallery({content}) {
     if (err) {
         console.log(err)
         //TODO component needed
-        return <div style={{height: '83vh'}}>KUR</div>;
+        return <div className={'inner_main_container'}>KUR</div>;
     }
     const items = content === 'images' ? images : videos
     if (items === null) {
         return (
             //TODO component needed
-            <div style={{height: '83vh'}}>
+            <div className={'inner_main_container'}>
                 <p>Loading...</p>
             </div>
         );

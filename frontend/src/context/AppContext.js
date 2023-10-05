@@ -5,7 +5,7 @@ export const AppContext = createContext();
 
 // Create language context provider component
 export const AppProvider = ({children}) => {
-    const [language, setLanguage] = useState('en');
+    const [language, setLanguage] = useState('bg');
     const [carouselImages, setCarouselImages] = useState(null);
     const [images, setImages] = useState(null);
     const [videos, setVideos] = useState(null);

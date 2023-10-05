@@ -1,8 +1,12 @@
+import faceBookLogo from '../public/facebook_logo.svg'
+import instagramLogo from '../public/instagram_logo.svg'
 import React, {useContext, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {AppContext} from "../context/AppContext";
 import axios from "axios";
 import PopUp from './PopUp';
+import {Nav} from 'react-bootstrap';
+import siteLogo from "../public/Logo500x500.svg";
 
 
 function Footer() {
@@ -26,7 +30,7 @@ function Footer() {
             )
             .catch(error => {
                 setErr(true)
-                setErrorMessage(language==='en'?'Something went wrong!':'Нещо се обърка!')
+                setErrorMessage(language === 'en' ? 'Something went wrong!' : 'Нещо се обърка!')
                 openPopup()
             })
     }
@@ -79,19 +83,35 @@ function Footer() {
                     <div className="col-md-6">
                         <ul className="list-inline">
                             <li className="list-inline-item">
-                                <a href="https://www.facebook.com/" target="_blank"
-                                   rel="noopener noreferrer">{language === 'en' ? 'Facebook' : 'Фейсбук'}</a>
+                                <a href="https://www.facebook.com/AmiDa6Theatre" target="_blank"
+                                   rel="noopener noreferrer">
+                                    <img
+                                        src={faceBookLogo} // Replace with your logo image URL
+                                        width="40"
+                                        height="40"
+                                        // className="d-inline-block align-top"
+                                        alt="Facebook"
+                                    />
+                                </a>
                             </li>
                             <li className="list-inline-item">
-                                <a href="https://www.instagram.com/" target="_blank"
-                                   rel="noopener noreferrer">{language === 'en' ? 'Instagram' : 'Инстаграм'}</a>
+                                <a href="https://instagram.com/theatreamida?igshid=OGQ5ZDc2ODk2ZA==" target="_blank"
+                                   rel="noopener noreferrer">
+                                    <img
+                                        src={instagramLogo} // Replace with your logo image URL
+                                        width="40"
+                                        height="40"
+                                        // className="d-inline-block align-top"
+                                        alt="Instagram"
+                                    />
+                                </a>
                             </li>
                         </ul>
                     </div>
                     <div className="col-md-6">
                         <ul className="list-inline">
                             <li className="list-inline-item">
-                                <Link onClick={handleContactsClick}>
+                                <Link className={'nav-link footer_link'} onClick={handleContactsClick}>
                                     {language === 'en' ? 'Contact Us' : 'Контакти'}
                                 </Link>
                                 {isPopupOpen &&

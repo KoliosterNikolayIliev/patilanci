@@ -48,7 +48,7 @@
 }
 
 //.footer{
-//  z-index: 1;
+//  padding-bottom: 0 !important;
 //}
 
 // gallery images spinner {
@@ -150,4 +150,15 @@
 
 .inner_main_container{
   height: 83vh;
+}
+.navbar{
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
+.footer_link{
+  color: #5e5c64 !important;
+}
+.footer_link:hover{
+  color: #3d3846 !important;
 }

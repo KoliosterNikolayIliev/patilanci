@@ -7,7 +7,7 @@ class Play(models.Model):
     name_bg = models.CharField(max_length=150, blank=False)
     description = models.TextField(null=True, blank=True)
     description_bg = models.TextField(null=True, blank=True)
-    program_bg = models.TextField(null=True, blank=True)
+    program_bg = models.DateTimeField(verbose_name="next_play", blank=True)
 
     def __str__(self):
         return self.name

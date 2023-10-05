@@ -8,7 +8,7 @@ function CarouselComponent() {
     const {carouselImages, setCarouselImages} = useContext(AppContext);
 
     const baseUrl = 'http://127.0.0.1:8000'
-
+    // TODO - carousel brakes contacts popup!!!!
     useEffect(() => {
         axios.get(baseUrl + '/api/carousel')
             .then(response => setCarouselImages(response.data))

@@ -1,4 +1,5 @@
 import siteLogo from '../public/Logo500x500.svg'
+import liveIcon from '../public/live_transperant.gif'
 import React, {useContext, useEffect} from 'react';
 import {Navbar, Nav, Container} from 'react-bootstrap';
 import {AppContext} from "../context/AppContext";
@@ -58,7 +59,11 @@ function Header() {
                     </Nav>
                     <Nav>
                         {youtubeLink && <Nav.Link as={Link} to={"/live"}>
-                            {language === 'en' ? 'Live' : 'На живо'}
+                            <img style={{paddingBottom:"3%"}}
+                                src={liveIcon} alt="live"
+                                width="25"
+                                height="25"
+                            />{language === 'en' ? 'Live' : 'На живо'}
                         </Nav.Link>}
                         <Nav.Link onClick={changeLanguage}>
                             {language === 'en' ? 'БГ' : 'EN'}

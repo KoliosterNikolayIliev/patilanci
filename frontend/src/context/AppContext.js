@@ -10,7 +10,7 @@ export const AppProvider = ({children}) => {
     const [images, setImages] = useState(null);
     const [videos, setVideos] = useState(null);
     const [contact, setContact] = useState(null);
-    const [youtubeLink, setYoutubeLink] = useState(true);
+    const [youtubeLink, setYoutubeLink] = useState(null);
 
     const changeLanguage = () => {
         setLanguage(prevLanguage => (prevLanguage === 'en' ? 'bg' : 'en'));

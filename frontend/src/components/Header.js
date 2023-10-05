@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import {Navbar, Nav, Container} from 'react-bootstrap';
 import {AppContext} from "../context/AppContext";
 import {Link} from "react-router-dom";
+import WebSocketService from './WebSocketService';
 
 
 function Header() {
@@ -10,42 +11,21 @@ function Header() {
     const {youtubeLink, setYoutubeLink} = useContext(AppContext);
 
 
-    useEffect(() => {
-        console.log('activated')
-        let ws = null;
-        // Replace 'your_secret_key_here' with your actual secret key
-        const secretKey = '111';
-        ws = new WebSocket(`ws://localhost:8000/ws/live-stream/?key=${secretKey}`);
-        console.log(ws)
-        ws.onopen = () => {
-            console.log('WebSocket connected.');
-        };
+    const secretKey = '111';
 
-        ws.onmessage = (event) => {
-            console.log('hereherehere')
+    // Initialize the WebSocket service
+    const ws = WebSocketService({ secretKey });
+    console.log(ws)
 
-            const data = JSON.parse(event.data);
-            console.log(data)
-            if (data.youtube_link === "unavailable") {
-                setYoutubeLink(null);
-            } else {
-                setYoutubeLink(data.youtube_link);
-            }
-        };
 
-        ws.onclose = () => {
-            console.log('WebSocket closed.');
-        };
-
-        ws.onerror = (error) => {
-            console.error('WebSocket error:', error);
-        };
-
-        // return () => {
-        //     // Close the WebSocket connection when the component is unmounted
-        //     ws.close();
-        // };
-    }, );
+//    ws.onmessage = (event) => {
+//    const link = JSON.parse(event.data).youtube_link
+//        if (link === "unavailable"){
+//            setYoutubeLink(null)
+//        }else{
+//            setYoutubeLink(link)
+//        }
+//    }
 
     return (
         <header className="header">

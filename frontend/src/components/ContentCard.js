@@ -44,7 +44,7 @@ function ContentCard({item, description, playName, playNameBg, descriptionBg, co
     }
     return (
         <>
-            <Card style={style}>
+            <Card >
                 <div style={{position: 'relative'}}>
                     {isLoading && (
                         <div className="custom_spinner_container">

@@ -38,7 +38,7 @@ class Video(models.Model):
 
     def save(self, *args, **kwargs):
         if self.play_main_video:
-            Video.objects.exclude(pk=self.pk).update(play_main_image=False)
+            Video.objects.exclude(pk=self.pk).update(play_main_video=False)
         super(Video, self).save(*args, **kwargs)
 
 

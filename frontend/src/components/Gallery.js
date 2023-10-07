@@ -1,4 +1,5 @@
 import ContentCard from "./ContentCard";
+import { Container, Row, Col } from 'react-bootstrap';
 import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../context/AppContext";
 import axios from "axios";
@@ -55,19 +56,23 @@ function Gallery({content}) {
 
     return (
         <div className={'base_container'}>
-            <div className="gallery_container">
-                {itemsWithFullUrl.map(item => (
-                    <ContentCard
-                        key={item.id}
-                        item={content === 'images' ? item.image_field_url : item.embedded_video}
-                        description={item.description}
-                        playName={item.play_name}
-                        playNameBg={item.play_name_bg}
-                        descriptionBg={item.description_bg}
-                        content={content}
-                    />
-                ))}
-            </div>
+            <Container>
+                <Row>
+                    {itemsWithFullUrl.map(item => (
+                        <Col key={item.id} xs={12} sm={6} md={3} style={{marginBottom: '1.5rem'}}>
+                            <ContentCard
+                                key={item.id}
+                                item={content === 'images' ? item.image_field_url : item.embedded_video}
+                                description={item.description}
+                                playName={item.play_name}
+                                playNameBg={item.play_name_bg}
+                                descriptionBg={item.description_bg}
+                                content={content}
+                            />
+                        </Col>
+                    ))}
+                </Row>
+            </Container>
         </div>
     );
 }

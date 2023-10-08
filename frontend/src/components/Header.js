@@ -53,7 +53,7 @@ function Header() {
                         <Nav.Link as={Link} to={"/video-gallery"}>
                             {language === 'en' ? 'Videos' : 'Видео галерия'}
                         </Nav.Link>
-                        <Nav.Link as={Link} to={"/performances"}>
+                        <Nav.Link as={Link} to={"/projects"}>
                             {language === 'en' ? 'Projects' : 'Проекти'}
                         </Nav.Link>
                     </Nav>

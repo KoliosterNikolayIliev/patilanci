@@ -20,6 +20,12 @@ const Performances = () => {
     }, [setPlays, endpoint]);
 
 
+     if (err) {
+        console.log(err)
+        //TODO component needed
+        return <div className={'inner_main_container'}>KUR</div>;
+    }
+
     if (plays === null) {
         return (
             //TODO component needed

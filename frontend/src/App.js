@@ -23,7 +23,7 @@ function App() {
                             <Route exact path="/" element={<CarouselComponent/>}/>
                             <Route exact path="/image-gallery" element={<Gallery content={'images'}/>}/>
                             <Route exact path="/video-gallery" element={<Gallery content={'videos'}/>}/>
-                            <Route exact path="/performances" element={<Performances/>}/>
+                            <Route exact path="/projects" element={<Performances/>}/>
                             <Route exact path="/contacts" element={<Contacts/>}/>
                             <Route exact path="/live" element={<Live/>}/>
                             <Route path="*" element={<NoPage/>}/>

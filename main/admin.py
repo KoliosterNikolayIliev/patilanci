@@ -21,7 +21,7 @@ class ImageAdmin(admin.ModelAdmin):
 
     # play_name.short_description = 'Play'
 
-    list_display = ('image_tag', 'description', 'description_bg', 'play', 'carousel', 'play_main_image', 'date_created')
+    list_display = ('image_tag', 'description', 'description_bg', 'play', 'carousel', 'poster', 'date_created')
 
 
 @admin.register(Play)

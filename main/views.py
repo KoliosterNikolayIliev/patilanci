@@ -1,7 +1,7 @@
 from time import sleep
-from main.models import Image, Video, ContactAndInfo
+from main.models import Image, Video, ContactAndInfo, Play
 from rest_framework import generics
-from main.serializers import ImageSerializer, VideoSerializer, ContactSerializer
+from main.serializers import ImageSerializer, VideoSerializer, ContactSerializer, PlaySerializer
 from django.http import JsonResponse
 from .models import LiveVideo
 import secrets
@@ -40,7 +40,7 @@ class CarouselAPIView(generics.ListAPIView):
 
 
 class ImageGalleryAPIView(generics.ListAPIView):
-    queryset = Image.objects.all()
+    queryset = Image.objects.filter(poster=False)
     serializer_class = ImageSerializer
 
     # def get(self, request, *args, **kwargs):
@@ -56,6 +56,9 @@ class VideoGalleryAPIView(generics.ListAPIView):
     #     sleep(2)
     #     return super().get(request, *args, **kwargs)
 
+class PlayAPIView(generics.ListAPIView):
+    queryset = Play.objects.all()
+    serializer_class = PlaySerializer
 
 class ContactAPIView(generics.ListAPIView):
     queryset = ContactAndInfo.objects.all()

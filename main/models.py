@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # TODO - cards with play with the ingo and small thumbnail to watch the video the same like videos and images but more text
 # TODO Live should be only one video and the button should be visible only whe there is live (maybe using web socket)
 class Play(models.Model):
@@ -7,7 +8,7 @@ class Play(models.Model):
     name_bg = models.CharField(max_length=150, blank=False)
     description = models.TextField(null=True, blank=True)
     description_bg = models.TextField(null=True, blank=True)
-    program_bg = models.DateTimeField(verbose_name="next_play", blank=True)
+    next_play = models.DateTimeField(verbose_name="next_play", blank=True)
 
     def __str__(self):
         return self.name
@@ -16,15 +17,15 @@ class Play(models.Model):
 class Image(models.Model):
     description = models.CharField(max_length=200, blank=True)
     description_bg = models.CharField(max_length=200, blank=True)
-    play = models.ForeignKey(to=Play, on_delete=models.SET_NULL, blank=True, null=True)
+    play = models.ForeignKey(to=Play, on_delete=models.SET_NULL, blank=False, null=True)
     carousel = models.BooleanField(blank=False, default=False)
     image_file = models.ImageField(upload_to='images/')
     date_created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-    play_main_image = models.BooleanField(blank=False, default=False)
+    poster = models.BooleanField(blank=False, default=False)
 
     def save(self, *args, **kwargs):
-        if self.play_main_image:
-            Image.objects.exclude(pk=self.pk).update(play_main_image=False)
+        if self.poster:
+            Image.objects.filter(play=self.play).exclude(pk=self.pk).update(poster=False)
         super(Image, self).save(*args, **kwargs)
 
 
@@ -69,7 +70,6 @@ class ContactAndInfo(models.Model):
 
     def __str__(self):
         return 'Contact information'
-
 
 # class SocialNetwork(models.Model):
 #     name = models.CharField(max_length=150, default='Unknown')

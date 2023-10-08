@@ -11,6 +11,7 @@ export const AppProvider = ({children}) => {
     const [videos, setVideos] = useState(null);
     const [contact, setContact] = useState(null);
     const [youtubeLink, setYoutubeLink] = useState(null);
+    const [plays, setPlays]=useState(null)
 
     const changeLanguage = () => {
         setLanguage(prevLanguage => (prevLanguage === 'en' ? 'bg' : 'en'));
@@ -29,7 +30,9 @@ export const AppProvider = ({children}) => {
             contact,
             setContact,
             youtubeLink,
-            setYoutubeLink
+            setYoutubeLink,
+            plays,
+            setPlays
 
         }}>
             {children}

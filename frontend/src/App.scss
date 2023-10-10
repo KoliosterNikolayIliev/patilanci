@@ -13,8 +13,9 @@
 
 }
 
+
 .carousel-image{
-    height:83vh;
+    min-height:83vh;
     object-fit: cover !important;
 }
 
@@ -152,8 +153,13 @@
 .nav-link{ margin-right: 80px !important;}
 
 .inner_main_container{
-  height: 83vh;
+  min-height: 83vh;
 }
+
+.carousel{
+    min-height: 83vh
+}
+
 .navbar{
   padding-bottom: 0 !important;
   padding-top: 0 !important;

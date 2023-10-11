@@ -39,7 +39,7 @@ function Header() {
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse id="basic-navbar-nav" style={{justifyContent:"center"}}>
             <Nav className="ml-auto mr-auto">
               <Nav.Link as={Link} to={'/'}>
                 {language === 'en' ? 'Home' : 'Начало'}
@@ -53,8 +53,7 @@ function Header() {
               <Nav.Link as={Link} to={'/projects'}>
                 {language === 'en' ? 'Projects' : 'Проекти'}
               </Nav.Link>
-            </Nav>
-            <Nav>
+
               {youtubeLink && (
               <div style={{ position: "relative" }}>
                 <Nav.Link as={Link} to={'/live'}>
@@ -67,7 +66,7 @@ function Header() {
                   />
                   {language === 'en' ? 'Live' : 'На живо'}
                 </Nav.Link>
-                </div>
+              </div>
               )}
               <Nav.Link onClick={changeLanguage}>
                 {language === 'en' ? 'БГ' : 'EN'}

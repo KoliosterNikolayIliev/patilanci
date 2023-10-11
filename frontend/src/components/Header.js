@@ -16,6 +16,14 @@ function Header() {
     updateSize()
   }
 
+  const eventSource = new EventSource('http://localhost:8000/sse/live');
+
+    eventSource.onmessage = function(event) {
+    const data = event.data;
+    console.log(data);
+    // Process and display the data in your web page
+    };
+
   function updateSize(){
         if (containerRef.current.offsetWidth < 900){
         containerRef.current.style.width = "100%"

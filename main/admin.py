@@ -50,7 +50,7 @@ class LiveVideoAdmin(admin.ModelAdmin):
 
     video_tag.short_description = 'Live video'
 
-    list_display = ('description', 'description_bg', 'play', 'video_tag')
+    list_display = ('description', 'description_bg', 'video_tag')
 
     def has_add_permission(self, request):
         if LiveVideo.objects.count() > 0:

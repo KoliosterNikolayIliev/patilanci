@@ -46,8 +46,6 @@ class Video(models.Model):
 class LiveVideo(models.Model):
     description = models.TextField(null=True, blank=True)
     description_bg = models.TextField(null=True, blank=True)
-    play = models.ForeignKey(to=Play, on_delete=models.SET_NULL, blank=True, null=True)
-    active = models.BooleanField(default=False)
     embedded_video = models.TextField(blank=False)
 
     def get_live_stream_link(self):

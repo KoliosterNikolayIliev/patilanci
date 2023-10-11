@@ -2,8 +2,8 @@ from time import sleep
 from main.models import Image, Video, ContactAndInfo, Play
 from rest_framework import generics
 from main.serializers import ImageSerializer, VideoSerializer, ContactSerializer, PlaySerializer
-from .models import LiveVideo
-
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # def some_view(request):
 #     images = Image.objects.all()
@@ -12,6 +12,7 @@ from .models import LiveVideo
 #     return render(request, 'index.html', context={'images': images, 'video': video})
 
 from django.views.generic import TemplateView
+
 
 # TODO - Not usable template view must be removed from urls
 class IndexView(TemplateView):
@@ -55,11 +56,27 @@ class VideoGalleryAPIView(generics.ListAPIView):
     #     sleep(2)
     #     return super().get(request, *args, **kwargs)
 
+
 class PlayAPIView(generics.ListAPIView):
     queryset = Play.objects.all()
     serializer_class = PlaySerializer
+
 
 class ContactAPIView(generics.ListAPIView):
     queryset = ContactAndInfo.objects.all()
     serializer_class = ContactSerializer
 
+
+connected_clients = set()
+
+@csrf_exempt
+def sse(request):
+    response = HttpResponse(content_type='text/event-stream')
+    response['Cache-Control'] = 'no-cache'
+    # response['Connection'] = 'keep-alive'
+
+    print(connected_clients)
+    for data in connected_clients:
+        response.write(f"data: {data}\n\n")
+
+    return response

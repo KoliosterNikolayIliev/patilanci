@@ -6,7 +6,7 @@ from main.views import (IndexView,
                         VideoGalleryAPIView,
                         ContactAPIView,
                         PlayAPIView,
-                        get_key)
+                        )
 
 app_name = 'main'
 urlpatterns = [
@@ -16,5 +16,4 @@ urlpatterns = [
     path('api/video_gallery', VideoGalleryAPIView.as_view()),
     path('api/plays', PlayAPIView.as_view()),
     path('api/contact', ContactAPIView.as_view()),
-    path('api/key', get_key)
 ]

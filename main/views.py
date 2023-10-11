@@ -2,9 +2,8 @@ from time import sleep
 from main.models import Image, Video, ContactAndInfo, Play
 from rest_framework import generics
 from main.serializers import ImageSerializer, VideoSerializer, ContactSerializer, PlaySerializer
-from django.http import JsonResponse
 from .models import LiveVideo
-import secrets
+
 
 # def some_view(request):
 #     images = Image.objects.all()
@@ -64,28 +63,3 @@ class ContactAPIView(generics.ListAPIView):
     queryset = ContactAndInfo.objects.all()
     serializer_class = ContactSerializer
 
-
-# # TODO - must be get
-# def get_live_stream_link(request):
-#     try:
-#         live_video = LiveVideo.objects.latest('id')
-#         print(live_video)
-#         link = live_video.get_live_stream_link()
-#         print("the link")
-#         print(link)
-#         return JsonResponse({'youtube_link': link})
-#
-#     except LiveVideo.DoesNotExist:
-#         return JsonResponse({'youtube_link': None})
-
-
-def generate_secret_key(length=50):
-    # Use secrets.token_hex() to generate a random hexadecimal string
-    secret_key = secrets.token_hex(length)
-    return secret_key
-
-
-# TODO - must be get
-def get_key(request):
-    random_secret_key = generate_secret_key()
-    return JsonResponse({'key': random_secret_key})

@@ -49,7 +49,6 @@ REST_FRAMEWORK = {
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    "daphne",
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -59,7 +58,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'main',
-    'channels',
 ]
 
 MIDDLEWARE = [
@@ -93,7 +91,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'patilanci.wsgi.application'
-ASGI_APPLICATION = "patilanci.routing.application"
+
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

@@ -4,7 +4,6 @@ import React, { useContext, useRef, useEffect } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import { Link } from 'react-router-dom';
-import WebSocketService from './WebSocketService';
 
 function Header() {
   const { language, changeLanguage } = React.useContext(AppContext);
@@ -12,28 +11,24 @@ function Header() {
   const secretKey = '111';
   const containerRef = useRef(null);
 
-  // Initialize the WebSocket service
-  const ws = WebSocketService({ secretKey });
-  console.log(ws);
+  function handleClick(){
+    changeLanguage()
+    updateSize()
+  }
 
+  function updateSize(){
+        if (containerRef.current.offsetWidth < 900){
+        containerRef.current.style.width = "100%"
+      }else{
+      containerRef.current.style.width = "80%"}
+  }
 
-  //    ws.onmessage = (event) => {
-//    const link = JSON.parse(event.data).youtube_link
-//        if (link === "unavailable"){
-//            setYoutubeLink(null)
-//        }else{
-//            setYoutubeLink(link)
-//        }
-//    }
 useEffect(() => {
     // Access and manipulate the container element in the useEffect hook
     if (containerRef.current) {
       // The container element is accessible as containerRef.current
-        console.log(containerRef.current.offsetWidth)
-      if (containerRef.current.offsetWidth < 900){
-        containerRef.current.style.width = "100%"
-      }else{
-      containerRef.current.style.width = "80%"}
+
+      updateSize();
     }
   });
 
@@ -88,7 +83,7 @@ useEffect(() => {
                 </Nav.Link>
               </div>
               )}
-              <Nav.Link onClick={changeLanguage}>
+              <Nav.Link onClick={handleClick}>
                 {language === 'en' ? 'БГ' : 'EN'}
               </Nav.Link>
             </Nav>

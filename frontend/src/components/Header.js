@@ -1,6 +1,6 @@
 import siteLogo from '../public/Logo500x500.svg';
 import liveIcon from '../public/live_transperant.gif';
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,7 @@ function Header() {
   const { language, changeLanguage } = React.useContext(AppContext);
   const { youtubeLink, setYoutubeLink } = useContext(AppContext);
   const secretKey = '111';
+  const containerRef = useRef(null);
 
   // Initialize the WebSocket service
   const ws = WebSocketService({ secretKey });
@@ -24,6 +25,18 @@ function Header() {
 //            setYoutubeLink(link)
 //        }
 //    }
+useEffect(() => {
+    // Access and manipulate the container element in the useEffect hook
+    if (containerRef.current) {
+      // The container element is accessible as containerRef.current
+        console.log(containerRef.current.offsetWidth)
+      if (containerRef.current.offsetWidth < 1000){
+        containerRef.current.style.width = "100%"
+      }else{
+      containerRef.current.style.width = "80%"}
+    }
+  });
+
 
   return (
     <header className="header">
@@ -40,7 +53,7 @@ function Header() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" style={{justifyContent:"center"}}>
-            <Nav className="ml-auto mr-auto" style={{justifyContent:"space-between", width:"100%"}}>
+            <Nav className="ml-auto mr-auto" style={{justifyContent:"space-between"}} ref={containerRef}>
               <Nav.Link as={Link} to={'/'}>
                 {language === 'en' ? 'Home' : 'Начало'}
               </Nav.Link>

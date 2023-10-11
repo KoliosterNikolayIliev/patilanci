@@ -40,7 +40,7 @@ function Header() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" style={{justifyContent:"center"}}>
-            <Nav className="ml-auto mr-auto">
+            <Nav className="ml-auto mr-auto" style={{justifyContent:"space-between", width:"100%"}}>
               <Nav.Link as={Link} to={'/'}>
                 {language === 'en' ? 'Home' : 'Начало'}
               </Nav.Link>

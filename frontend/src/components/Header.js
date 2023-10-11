@@ -30,7 +30,7 @@ useEffect(() => {
     if (containerRef.current) {
       // The container element is accessible as containerRef.current
         console.log(containerRef.current.offsetWidth)
-      if (containerRef.current.offsetWidth < 1000){
+      if (containerRef.current.offsetWidth < 900){
         containerRef.current.style.width = "100%"
       }else{
       containerRef.current.style.width = "80%"}
@@ -53,7 +53,7 @@ useEffect(() => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" style={{justifyContent:"center"}}>
-            <Nav className="ml-auto mr-auto" style={{justifyContent:"space-between"}} ref={containerRef}>
+            <Nav className="ml-auto mr-auto" style={{justifyContent:"space-between", width:"80%"}} ref={containerRef}>
               <Nav.Link as={Link} to={'/'}>
                 {language === 'en' ? 'Home' : 'Начало'}
               </Nav.Link>
@@ -68,15 +68,22 @@ useEffect(() => {
               </Nav.Link>
 
               {youtubeLink && (
-              <div style={{ position: "relative" }}>
-                <Nav.Link as={Link} to={'/live'}>
-                  <img
-                    style={{ position: "absolute" , right:"44%"}}
+              <div style={{
+//              position: "relative"
+                display:"flex",
+                alignItems:"center",
+                justifyContent:"center"
+              }}
+              >
+              <img
+                    style={{marginBottom: "4px"}}
                     src={liveIcon}
                     alt="live"
                     width="20rem"
                     height="20rem"
                   />
+                <Nav.Link as={Link} to={'/live'}>
+
                   {language === 'en' ? 'Live' : 'На живо'}
                 </Nav.Link>
               </div>

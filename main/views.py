@@ -1,9 +1,10 @@
 from time import sleep
-from main.models import Image, Video, ContactAndInfo, Play
+from main.models import Image, Video, ContactAndInfo, Play, LiveVideo
 from rest_framework import generics
 from main.serializers import ImageSerializer, VideoSerializer, ContactSerializer, PlaySerializer
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+
 
 # def some_view(request):
 #     images = Image.objects.all()
@@ -67,16 +68,37 @@ class ContactAPIView(generics.ListAPIView):
     serializer_class = ContactSerializer
 
 
-connected_clients = set()
-
-@csrf_exempt
-def sse(request):
-    response = HttpResponse(content_type='text/event-stream')
-    response['Cache-Control'] = 'no-cache'
-    # response['Connection'] = 'keep-alive'
-
-    print(connected_clients)
-    for data in connected_clients:
-        response.write(f"data: {data}\n\n")
-
-    return response
+# connected_clients = set('1')
+#
+#
+# @csrf_exempt
+# def sse(request):
+#     response = HttpResponse(content_type='text/event-stream')
+#     response['Cache-Control'] = 'no-cache'
+#     # response['Connection'] = 'keep-alive'
+#
+#     # print(connected_clients)
+#     # for data in connected_clients:
+#     # response.write(f"data: {data}\n\n")
+#     response.write(f"data: {'1'}\n\n")
+#
+#     return response
+#
+#
+# # connected_clients = set('1')
+# #
+# #
+# # @csrf_exempt
+# # def sse(request):
+# #     response = HttpResponse(content_type='text/event-stream')
+# #     response['Cache-Control'] = 'no-cache'
+# #     response['Connection'] = 'keep-alive'
+# #     def sse_generator():
+# #         while True:
+# #             for data in connected_clients:
+# #                 print(data)
+# #                 yield f"data: {data}\n\n"
+# #             time.sleep(1)  # Adjust this to control the update rate
+# #
+# #     return  HttpResponse(sse_generator(), content_type='text/event-stream')
+# #     # return HttpResponse(f"data: {'1'}\n\n", content_type='text/event-stream')

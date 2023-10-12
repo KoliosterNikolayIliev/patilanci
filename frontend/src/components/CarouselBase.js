@@ -6,7 +6,7 @@ import {AppContext} from "../context/AppContext";
 function CarouselBase({images}) {
     const { language } = React.useContext(AppContext);
     // ADD PERFORMANCE TO SLIDE
-    console.log(images)
+    // console.log(images)
     return (
         <Carousel
             fade

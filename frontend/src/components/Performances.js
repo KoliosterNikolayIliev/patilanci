@@ -46,7 +46,7 @@ const Performances = () => {
             }
             return play; // If poster_url is "no_mage", don't change it
         });
-        console.log(articles)
+//        console.log(articles)
         return articles;
     }
 

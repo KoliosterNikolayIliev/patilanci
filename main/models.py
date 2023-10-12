@@ -69,6 +69,11 @@ class ContactAndInfo(models.Model):
     def __str__(self):
         return 'Contact information'
 
+# TODO - this date is needed in order frontend to know when to fetch when live video exists!
+class NextLiveVideo(models.Model):
+    date = models.DateTimeField(blank=False)
+    live_video_is_playing = models.BooleanField(default=False, blank=False)
+# TODO - for removal
 # class SocialNetwork(models.Model):
 #     name = models.CharField(max_length=150, default='Unknown')
 #     contact = models.ForeignKey(to=ContactAndInfo, on_delete=models.CASCADE)

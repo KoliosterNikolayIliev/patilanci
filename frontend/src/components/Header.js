@@ -8,52 +8,17 @@ import { Link } from 'react-router-dom';
 function Header() {
   const { language, changeLanguage } = React.useContext(AppContext);
   const { youtubeLink, setYoutubeLink } = useContext(AppContext);
-  const secretKey = '111';
   const containerRef = useRef(null);
-  const [sseData, setSSEData] = useState([]);
 
 // TODO - next live event in DB if close to event check for video (every three minutes for 9 minutes after the time ) and update the button
 // TODO - also check for live on every refresh
 // TODO - REMOVE all sse sockets nad shit
-//  const eventSource = new EventSource('http://localhost:8000/sse/live');
-  useEffect(() => {
-    console.log('event listener')
-    const eventSource = new EventSource('http://localhost:8000/sse/live');
-
-    eventSource.onmessage = (event) => {
-      console.log('here')
-      console.log(event)
-      // Handle incoming SSE data here
-      const newData = event.data
-      console.log(newData)
-      // Update the state with the new data
-      //setSSEData((prevData) => [...prevData, newData]);
-    };
-
-    eventSource.onerror = (error) => {
-      console.error('SSE error:', error);
-      eventSource.close();
-    };
-
-    return () => {
-      // Clean up the EventSource when the component unmounts
-      eventSource.close();
-    };
-  }, []);
-
+// TODO - all requests in services
 
   function handleClick(){
     changeLanguage()
     updateSize()
   }
-
-//  const eventSource = new EventSource('http://localhost:8000/sse/live');
-//
-//    eventSource.onmessage = function(event) {
-//    const data = event.data;
-//    console.log(data);
-//    // Process and display the data in your web page
-//    };
 
   function updateSize(){
         if (containerRef.current.offsetWidth < 900){

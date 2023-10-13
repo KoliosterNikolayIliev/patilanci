@@ -66,7 +66,7 @@ useEffect(() => {
                 {language === 'en' ? 'Projects' : 'Проекти'}
               </Nav.Link>
 
-              {youtubeLink && (
+              {/*{youtubeLink && (*/}
               <div style={{
 //              position: "relative"
                 display:"flex",
@@ -86,7 +86,7 @@ useEffect(() => {
                   {language === 'en' ? 'Live' : 'На живо'}
                 </Nav.Link>
               </div>
-              )}
+              {/*)}*/}
               <Nav.Link onClick={handleClick}>
                 {language === 'en' ? 'БГ' : 'EN'}
               </Nav.Link>

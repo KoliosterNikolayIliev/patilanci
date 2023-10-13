@@ -1,7 +1,7 @@
 from time import sleep
 from main.models import Image, Video, ContactAndInfo, Play, LiveVideo
 from rest_framework import generics
-from main.serializers import ImageSerializer, VideoSerializer, ContactSerializer, PlaySerializer
+from main.serializers import ImageSerializer, VideoSerializer, ContactSerializer, PlaySerializer, LiveVideoSerializer
 
 # def some_view(request):
 #     images = Image.objects.all()
@@ -54,6 +54,9 @@ class VideoGalleryAPIView(generics.ListAPIView):
     #     sleep(2)
     #     return super().get(request, *args, **kwargs)
 
+class LiveVideoAPIView(generics.ListAPIView):
+    queryset = LiveVideo.objects.all()
+    serializer_class = LiveVideoSerializer
 
 class PlayAPIView(generics.ListAPIView):
     queryset = Play.objects.all()

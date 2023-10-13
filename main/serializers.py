@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from main.models import Image, Video, ContactAndInfo, Play  # SocialNetwork
+from main.models import Image, Video, ContactAndInfo, Play, LiveVideo  # SocialNetwork
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -40,11 +40,6 @@ class VideoSerializer(serializers.ModelSerializer):
         return obj.play.name_bg
 
 
-# class SocialNetworkSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = SocialNetwork
-#         fields = ('id', 'name', 'url', 'icon_class')
-
 
 class PlaySerializer(serializers.ModelSerializer):
     poster_url = serializers.SerializerMethodField()
@@ -72,3 +67,24 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactAndInfo
         fields = ('id', 'phone', 'address', 'address_bg', 'info', 'info_bg', 'about', 'about_bg',)
+
+class LiveVideoSerializer(serializers.ModelSerializer):
+    # # embedded_video = serializers.SerializerMethodField()
+    # description = serializers.SerializerMethodField()
+    # description_bg = serializers.SerializerMethodField()
+    #  = models.TextField(null=True, blank=True)
+    #  = models.TextField(null=True, blank=True)
+    # embedded_video = models.TextField(blank=False)
+
+    class Meta:
+        model = LiveVideo
+        fields = ('embedded_video', 'description', 'description_bg')
+
+    # # def get_image_field_url(self, obj):
+    # #     return obj.image_file.url
+    #
+    # def get_play_name(self, obj):
+    #     return obj.play.name
+    #
+    # def get_play_name_bg(self, obj):
+    #     return obj.play.name_bg

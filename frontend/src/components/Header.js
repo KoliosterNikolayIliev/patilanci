@@ -1,14 +1,17 @@
 import siteLogo from '../public/Logo500x500.svg';
 import liveIcon from '../public/live_transperant.gif';
-import React, { useContext, useRef, useEffect, useState } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { AppContext } from '../context/AppContext';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import getLiveVideo from "../services/getLiveVideo"
 
 function Header() {
   const { language, changeLanguage } = React.useContext(AppContext);
-  const { youtubeLink, setYoutubeLink } = useContext(AppContext);
+  const { youtubeLink, setYoutubeLink, setLiveDescription, setLiveDescriptionBg} = useContext(AppContext);
   const containerRef = useRef(null);
+      const navigate = useNavigate();
+  const live_location = useLocation().pathname === "/live";
 
 // TODO - next live event in DB if close to event check for video (every three minutes for 9 minutes after the time ) and update the button
 // TODO - also check for live on every refresh
@@ -36,6 +39,25 @@ useEffect(() => {
     }
   });
 
+   useEffect(()=>{
+    if(!youtubeLink && live_location){
+        navigate('/');
+    }
+  });
+
+      useEffect(() => {
+        getLiveVideo()
+            .then(response =>{
+              const data = response.data[0]
+              console.log(data)
+             setYoutubeLink(data.embedded_video)
+             setLiveDescription(data.description)
+             setLiveDescriptionBg(data.description_bg)
+             })
+            .catch(error =>
+            console.log(error)
+            );
+    }, [setYoutubeLink, setLiveDescription, setLiveDescriptionBg]);
 
   return (
     <header className="header">
@@ -66,9 +88,8 @@ useEffect(() => {
                 {language === 'en' ? 'Projects' : 'Проекти'}
               </Nav.Link>
 
-              {/*{youtubeLink && (*/}
+              {youtubeLink && (
               <div style={{
-//              position: "relative"
                 display:"flex",
                 alignItems:"center",
                 justifyContent:"center"
@@ -86,7 +107,7 @@ useEffect(() => {
                   {language === 'en' ? 'Live' : 'На живо'}
                 </Nav.Link>
               </div>
-              {/*)}*/}
+              )}
               <Nav.Link onClick={handleClick}>
                 {language === 'en' ? 'БГ' : 'EN'}
               </Nav.Link>

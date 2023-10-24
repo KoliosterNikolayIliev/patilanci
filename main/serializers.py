@@ -22,7 +22,6 @@ class ImageSerializer(serializers.ModelSerializer):
 
 
 class VideoSerializer(serializers.ModelSerializer):
-    # embedded_video = serializers.SerializerMethodField()
     play_name = serializers.SerializerMethodField()
     play_name_bg = serializers.SerializerMethodField()
 
@@ -30,15 +29,11 @@ class VideoSerializer(serializers.ModelSerializer):
         model = Video
         fields = ('id', 'embedded_video', 'description', 'description_bg', 'play_name', 'play_name_bg')
 
-    # def get_image_field_url(self, obj):
-    #     return obj.image_file.url
-
     def get_play_name(self, obj):
         return obj.play.name
 
     def get_play_name_bg(self, obj):
         return obj.play.name_bg
-
 
 
 class PlaySerializer(serializers.ModelSerializer):
@@ -53,38 +48,15 @@ class PlaySerializer(serializers.ModelSerializer):
         if len(image) > 0:
             return image[0].image_file.url
         return 'no_image'
-    #
-    # def get_play_name(self, obj):
-    #     return obj.name
-    #
-    # def get_play_name_bg(self, obj):
-    #     return obj.name_bg
 
 
 class ContactSerializer(serializers.ModelSerializer):
-    # socialnetwork_set = SocialNetworkSerializer(many=True)
-
     class Meta:
         model = ContactAndInfo
         fields = ('id', 'phone', 'address', 'address_bg', 'info', 'info_bg', 'about', 'about_bg',)
 
-class LiveVideoSerializer(serializers.ModelSerializer):
-    # # embedded_video = serializers.SerializerMethodField()
-    # description = serializers.SerializerMethodField()
-    # description_bg = serializers.SerializerMethodField()
-    #  = models.TextField(null=True, blank=True)
-    #  = models.TextField(null=True, blank=True)
-    # embedded_video = models.TextField(blank=False)
 
+class LiveVideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = LiveVideo
         fields = ('embedded_video', 'description', 'description_bg')
-
-    # # def get_image_field_url(self, obj):
-    # #     return obj.image_file.url
-    #
-    # def get_play_name(self, obj):
-    #     return obj.play.name
-    #
-    # def get_play_name_bg(self, obj):
-    #     return obj.play.name_bg

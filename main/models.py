@@ -1,8 +1,6 @@
 from django.db import models
 
 
-# TODO - cards with play with the ingo and small thumbnail to watch the video the same like videos and images but more text
-# TODO Live should be only one video and the button should be visible only whe there is live (maybe using web socket)
 class Play(models.Model):
     name = models.CharField(max_length=150, blank=False)
     name_bg = models.CharField(max_length=150, blank=False)
@@ -49,7 +47,6 @@ class LiveVideo(models.Model):
     embedded_video = models.TextField(blank=False)
 
     def get_live_stream_link(self):
-        # Implement your logic here to get the live stream link based on the model data
         return self.embedded_video
 
 
@@ -69,16 +66,9 @@ class ContactAndInfo(models.Model):
     def __str__(self):
         return 'Contact information'
 
-# TODO - this date is needed in order frontend to know when to fetch when live video exists!
+
+# TODO - this date is needed in order frontend to know when to fetch when live video exists! (for future development)
 class NextLiveVideo(models.Model):
     date = models.DateTimeField(blank=False)
     live_video_is_playing = models.BooleanField(default=False, blank=False)
-# TODO - for removal
-# class SocialNetwork(models.Model):
-#     name = models.CharField(max_length=150, default='Unknown')
-#     contact = models.ForeignKey(to=ContactAndInfo, on_delete=models.CASCADE)
-#     url = models.URLField()
-#     icon_class = models.CharField(max_length=150, blank=True, default=None, null=True)
-#
-#     def __str__(self):
-#         return self.name
+

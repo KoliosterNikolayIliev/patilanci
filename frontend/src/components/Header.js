@@ -13,10 +13,12 @@ function Header() {
       const navigate = useNavigate();
   const live_location = useLocation().pathname === "/live";
 
-// TODO - next live event in DB if close to event check for video (every three minutes for 9 minutes after the time ) and update the button
-// TODO - also check for live on every refresh
-// TODO - REMOVE all sse sockets nad shit
+// TODO - next live event in DB if close to event check for video (every three minutes for 9 minutes after the time ) and update the button(POSTPONED)
+// TODO - also check for live on every refresh(POSTPONED)
+
 // TODO - all requests in services
+
+    // TODO - add favicons etc...
 
   function handleClick(){
     changeLanguage()

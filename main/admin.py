@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
-from .models import Image, Play, Video, ContactAndInfo, LiveVideo  # SocialNetwork
+from .models import Image, Play, Video, ContactAndInfo, LiveVideo
 
 
 @admin.register(Image)
@@ -15,12 +15,6 @@ class ImageAdmin(admin.ModelAdmin):
         return format_html('<img src="{}" width="224"/>'.format(obj.image_file.url))
 
     image_tag.short_description = 'Image'
-
-    # def play_name(self, obj):
-    #     return obj.play.name
-
-    # play_name.short_description = 'Play'
-
     list_display = ('image_tag', 'description', 'description_bg', 'play', 'carousel', 'poster', 'date_created')
 
 
@@ -58,15 +52,8 @@ class LiveVideoAdmin(admin.ModelAdmin):
         return True
 
 
-# class SocialNetworkInline(admin.TabularInline):
-#     model = SocialNetwork
-#     extra = 0
-
-
-# TODO - maybe this is not needed - can be entered directly on frontend
 @admin.register(ContactAndInfo)
 class ContactAndInfoAdmin(admin.ModelAdmin):
-    # inlines = (SocialNetworkInline,)
 
     def has_add_permission(self, request):
         if ContactAndInfo.objects.count() > 0:

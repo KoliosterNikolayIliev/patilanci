@@ -11,6 +11,7 @@ function ContentCard({item, description, playName, playNameBg, descriptionBg, co
     //content==='images'?true:false
     const [showModal, setShowModal] = useState(false);
     // TODO send iframe safely
+    // TODO style - live to be responsible like the others
     //"""<iframe width="560" height="315" src="https://www.youtube.com/embed/Mau7HEoGmTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>"""
     const iframeObject = {};
     if (content === 'videos') {

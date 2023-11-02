@@ -37,9 +37,9 @@ function CarouselComponent() {
     }));
 
     return (
-        <>
+        <div className={'main_container'}>
             <CarouselBase images={imagesWithFullUrl}/>
-        </>
+        </div>
     );
 }
 

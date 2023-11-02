@@ -2,8 +2,8 @@ import React from 'react';
 
 const Popup = ({onClose, contactData, header, error, message}) => {
     const contactInfo = contactData;
-    console.log(message)
-    console.log(error)
+    // console.log(message)
+    // console.log(error)
 
     return (
         <div className="popup-overlay">

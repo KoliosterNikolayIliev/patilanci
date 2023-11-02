@@ -7,7 +7,7 @@
 }
 
 .header{
-  margin-bottom: 1rem;
+
 }
 .main-container{
 
@@ -20,10 +20,12 @@
 }
 
 .base_container{
+  margin-top: 1rem;
   min-height: 83vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
 
 }
@@ -171,3 +173,16 @@
 .footer_link:hover{
   color: #3d3846 !important;
 }
+
+
+
+//@media (max-width: 540px) {
+//  .card-text {
+//    max-width: 43% !important;
+//  }
+//}
+//@media (max-width: 280px) {
+//  .card-text {
+//    max-width: 70% !important;
+//  }
+//}

@@ -5,7 +5,7 @@ import {AppContext} from "../context/AppContext";
 import YouTubeIframeComponent from "./YouTubeIframe";
 
 
-function ContentCard({item, description, playName, playNameBg, descriptionBg, content}) {
+function ContentCard({item, description, playName, playNameBg, descriptionBg, content, date}) {
     const {language} = React.useContext(AppContext);
     const [isLoading, setIsLoading] = useState(true);
     //content==='images'?true:false
@@ -43,6 +43,8 @@ function ContentCard({item, description, playName, playNameBg, descriptionBg, co
         width: '18rem',
         maxHeight: '18rem'
     }
+    console.log('item')
+    console.log(item)
     return (
         <>
             <Card >
@@ -52,14 +54,14 @@ function ContentCard({item, description, playName, playNameBg, descriptionBg, co
                             <div className="custom_spinner"></div>
                         </div>
                     )}
-                    {content === 'images' ? <Card.Img
+                    {content === 'images' || content ==='projects' ? <Card.Img
                         variant="top"
                         src={item}
                         className="custom_img_card_img"
                         style={{opacity: isLoading ? 0 : 1, cursor: 'pointer'}}
                         onLoad={handleItemLoad}
                         onClick={handleModalShow}
-                    /> : <YouTubeIframeComponent
+                    /> :<YouTubeIframeComponent
                         handleItemLoad={handleItemLoad}
                         width={iframeObject.width}
                         height={iframeObject.height}
@@ -75,6 +77,11 @@ function ContentCard({item, description, playName, playNameBg, descriptionBg, co
                         {language === 'en' ? description : descriptionBg}
                     </Card.Text>
                 </Card.Body>
+                { content === "projects" &&
+                <Card.Footer>
+                <small className="text-muted">{date}</small>
+                </Card.Footer>
+                }
             </Card>
             <Modal style={{cursor: 'pointer'}} show={showModal} onHide={handleModalClose} onClick={handleModalClose}
                    size="lg">

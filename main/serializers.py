@@ -15,10 +15,10 @@ class ImageSerializer(serializers.ModelSerializer):
         return obj.image_file.url
 
     def get_play_name(self, obj):
-        return obj.play.name
+        return obj.play.play_name
 
     def get_play_name_bg(self, obj):
-        return obj.play.name_bg
+        return obj.play.play_name_bg
 
 
 class VideoSerializer(serializers.ModelSerializer):
@@ -30,10 +30,10 @@ class VideoSerializer(serializers.ModelSerializer):
         fields = ('id', 'embedded_video', 'description', 'description_bg', 'play_name', 'play_name_bg')
 
     def get_play_name(self, obj):
-        return obj.play.name
+        return obj.play.play_name
 
     def get_play_name_bg(self, obj):
-        return obj.play.name_bg
+        return obj.play.play_name_bg
 
 
 class PlaySerializer(serializers.ModelSerializer):
@@ -41,7 +41,7 @@ class PlaySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Play
-        fields = ('id', 'name', 'name_bg', 'description', 'description_bg', 'next_play', 'poster_url')  # poster_url
+        fields = ('id', 'play_name', 'play_name_bg', 'description', 'description_bg', 'next_play', 'poster_url')  # poster_url
 
     def get_poster_url(self, obj):
         image = obj.image_set.filter(poster=True)

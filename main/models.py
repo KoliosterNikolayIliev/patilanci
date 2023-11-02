@@ -2,14 +2,14 @@ from django.db import models
 
 
 class Play(models.Model):
-    name = models.CharField(max_length=150, blank=False)
-    name_bg = models.CharField(max_length=150, blank=False)
+    play_name = models.CharField(max_length=150, blank=False)
+    play_name_bg = models.CharField(max_length=150, blank=False)
     description = models.TextField(null=True, blank=True)
     description_bg = models.TextField(null=True, blank=True)
     next_play = models.DateTimeField(verbose_name="next_play", blank=True)
 
     def __str__(self):
-        return self.name
+        return self.play_name
 
 
 class Image(models.Model):

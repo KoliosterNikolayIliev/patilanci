@@ -51,7 +51,7 @@ useEffect(() => {
         getLiveVideo()
             .then(response =>{
               const data = response.data[0]
-              console.log(data)
+              // console.log(data)
              setYoutubeLink(data.embedded_video)
              setLiveDescription(data.description)
              setLiveDescriptionBg(data.description_bg)

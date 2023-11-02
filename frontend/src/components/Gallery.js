@@ -1,5 +1,6 @@
 import ContentCard from "./ContentCard";
 import noImage from '../public/no_image.png'
+import LogoLoader from './LogoLoader'
 import {Container, Row, Col} from 'react-bootstrap';
 import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../context/AppContext";
@@ -58,7 +59,7 @@ function Gallery({content}) {
         return (
             //TODO component needed
             <div className={'inner_main_container'}>
-                <p>Loading...</p>
+                <LogoLoader/>
             </div>
         );
     }

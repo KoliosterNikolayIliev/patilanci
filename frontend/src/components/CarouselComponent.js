@@ -1,3 +1,4 @@
+import LogoLoader from './LogoLoader';
 import {useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import CarouselBase from "./CarouselBase";
@@ -25,7 +26,7 @@ function CarouselComponent() {
         return (
             //TODO component needed
             <div className={'inner_main_container'}>
-                <p>Loading...</p>
+                <LogoLoader/>
             </div>
         );
     }

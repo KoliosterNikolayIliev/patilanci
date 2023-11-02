@@ -15,8 +15,9 @@
 
 
 .carousel-image{
-    min-height:83vh;
-    object-fit: cover !important;
+  min-height:83vh;
+  object-fit: cover !important;
+  max-height:83vh;
 }
 
 .base_container{
@@ -186,3 +187,33 @@
 //    max-width: 70% !important;
 //  }
 //}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(5);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.logo-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.pulsating-loader {
+  width: 100px; /* Adjust the size as needed */
+  height: 100px;
+  //background-color: #007bff; /* Adjust the background color as needed */
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite; /* Apply the 'pulse' animation to the loader */
+}

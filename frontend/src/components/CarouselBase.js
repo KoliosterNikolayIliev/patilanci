@@ -18,7 +18,7 @@ function CarouselBase({images}) {
                     <img
                         className="d-block w-100 carousel-image"
                         src={image.image_field_url}
-                        alt={`Slide ${index + 1}`}
+                        alt={""}
                     />
                     <Carousel.Caption>
                         <h3>{language === 'en' ? image.play_name : image.play_name_bg}</h3>

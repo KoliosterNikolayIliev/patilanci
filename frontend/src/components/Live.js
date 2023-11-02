@@ -1,24 +1,23 @@
 // src/LiveSection.js
 
-import React, { useContext,} from 'react';
+import React, {useContext,} from 'react';
 import {AppContext} from "../context/AppContext";
-
 
 
 const Live = () => {
     const {youtubeLink, liveDescription, liveDescriptionBg, language} = useContext(AppContext);
-    console.log(liveDescriptionBg)
+    // console.log(liveDescriptionBg)
 
 
-  return (
-    <div>
+    return (
+        <div>
 
-          <div dangerouslySetInnerHTML={{ __html: youtubeLink }} />
-          <div>{language==='en'?liveDescription:liveDescriptionBg}</div>
+            <div dangerouslySetInnerHTML={{__html: youtubeLink}}/>
+            <div>{language === 'en' ? liveDescription : liveDescriptionBg}</div>
 
 
-    </div>
-  );
+        </div>
+    );
 };
 
 export default Live;

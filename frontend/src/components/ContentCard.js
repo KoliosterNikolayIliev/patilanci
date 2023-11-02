@@ -39,29 +39,23 @@ function ContentCard({item, description, playName, playNameBg, descriptionBg, co
         setShowModal(true);
     };
     // const style = image?{ width: '18rem', marginTop:'1%'}:{opacity:0}
-    const style = {
-        width: '18rem',
-        maxHeight: '18rem'
-    }
-    console.log('item')
-    console.log(item)
     return (
         <>
-            <Card >
+            <Card>
                 <div style={{position: 'relative'}}>
                     {isLoading && (
                         <div className="custom_spinner_container">
                             <div className="custom_spinner"></div>
                         </div>
                     )}
-                    {content === 'images' || content ==='projects' ? <Card.Img
+                    {content === 'images' || content === 'projects' ? <Card.Img
                         variant="top"
                         src={item}
                         className="custom_img_card_img"
                         style={{opacity: isLoading ? 0 : 1, cursor: 'pointer'}}
                         onLoad={handleItemLoad}
                         onClick={handleModalShow}
-                    /> :<YouTubeIframeComponent
+                    /> : <YouTubeIframeComponent
                         handleItemLoad={handleItemLoad}
                         width={iframeObject.width}
                         height={iframeObject.height}
@@ -77,10 +71,10 @@ function ContentCard({item, description, playName, playNameBg, descriptionBg, co
                         {language === 'en' ? description : descriptionBg}
                     </Card.Text>
                 </Card.Body>
-                { content === "projects" &&
-                <Card.Footer>
-                <small className="text-muted">{date}</small>
-                </Card.Footer>
+                {content === "projects" &&
+                    <Card.Footer>
+                        <small className="text-muted">{date}</small>
+                    </Card.Footer>
                 }
             </Card>
             <Modal style={{cursor: 'pointer'}} show={showModal} onHide={handleModalClose} onClick={handleModalClose}

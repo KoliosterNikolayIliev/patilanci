@@ -8,23 +8,23 @@ function CarouselComponent() {
     const [err, setErr] = useState(false);
     const {carouselImages, setCarouselImages} = useContext(AppContext);
 
-    // TODO - in services!!!
-    const baseUrl = 'http://127.0.0.1:8000'
+    // TODO - in services!!! in ENV
+    const baseUrl = `${process.env.REACT_APP_API_BASE_URL}`
     useEffect(() => {
-        axios.get(baseUrl + '/api/carousel')
+        axios.get(baseUrl + `${process.env.REACT_APP_API_CAROUSEL}`)
             .then(response => setCarouselImages(response.data))
             .catch(error => setErr(true));
-    }, [setCarouselImages]);
+    }, [setCarouselImages,baseUrl]);
 
     if (err) {
         console.log(err)
-        //TODO component needed
-        return <div className={'inner_main_container'}>KUR</div>;
+        return <div className={'inner_main_container'}>
+                <LogoLoader/>
+                </div>;
     }
 
     if (carouselImages === null) {
         return (
-            //TODO component needed
             <div className={'inner_main_container'}>
                 <LogoLoader/>
             </div>
@@ -33,9 +33,9 @@ function CarouselComponent() {
 
     const imagesWithFullUrl = carouselImages.map(
         (image) => ({
-        ...image,
-        image_field_url: baseUrl + image.image_field_url
-    }));
+            ...image,
+            image_field_url: baseUrl + image.image_field_url
+        }));
 
     return (
         <div className={'main_container'}>

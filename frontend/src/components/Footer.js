@@ -1,12 +1,10 @@
 import faceBookLogo from '../public/facebook_logo.svg'
 import instagramLogo from '../public/instagram_logo.svg'
-import React, {useContext, useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {AppContext} from "../context/AppContext";
 import axios from "axios";
 import PopUp from './PopUp';
-import {Nav} from 'react-bootstrap';
-import siteLogo from "../public/Logo500x500.svg";
 
 
 function Footer() {
@@ -17,8 +15,8 @@ function Footer() {
     const [errorMessage, setErrorMessage] = useState('')
 
 
-    const baseUrl = 'http://127.0.0.1:8000'
-    const endpoint = '/api/contact'
+    const baseUrl = `${process.env.REACT_APP_API_BASE_URL}`
+    const endpoint = `${process.env.REACT_APP_API_CONTACT}`
 
     function handleContactsClick() {
         axios.get(baseUrl + endpoint)

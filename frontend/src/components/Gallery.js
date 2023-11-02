@@ -11,7 +11,6 @@ function Gallery({content}) {
     const {images, setImages} = useContext(AppContext);
     const {videos, setVideos} = useContext(AppContext);
     const {plays, setPlays} = useContext(AppContext);
-    // TODO - must be put in .env
     const baseUrl = `${process.env.REACT_APP_API_BASE_URL}`
     const paths = {
         'images': `${process.env.REACT_APP_API_IMAGES}`,

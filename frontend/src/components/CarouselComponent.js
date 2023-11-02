@@ -8,7 +8,7 @@ function CarouselComponent() {
     const [err, setErr] = useState(false);
     const {carouselImages, setCarouselImages} = useContext(AppContext);
 
-    // TODO - in services!!! in ENV
+    // TODO - in services
     const baseUrl = `${process.env.REACT_APP_API_BASE_URL}`
     useEffect(() => {
         axios.get(baseUrl + `${process.env.REACT_APP_API_CAROUSEL}`)

@@ -52,7 +52,7 @@ function ContentCard({item, description, playName, playNameBg, descriptionBg, co
                         variant="top"
                         src={item}
                         className="custom_img_card_img"
-                        style={{opacity: isLoading ? 0 : 1, cursor: 'pointer'}}
+                        style={{opacity: isLoading ? 0 : 1, cursor: content==='images'?'pointer':'auto'}}
                         onLoad={handleItemLoad}
                         onClick={handleModalShow}
                     /> : <YouTubeIframeComponent
@@ -77,18 +77,20 @@ function ContentCard({item, description, playName, playNameBg, descriptionBg, co
                     </Card.Footer>
                 }
             </Card>
-            <Modal style={{cursor: 'pointer'}} show={showModal} onHide={handleModalClose} onClick={handleModalClose}
-                   size="lg">
+            {content === "images" &&
+                <Modal style={{cursor: 'pointer'}} show={showModal} onHide={handleModalClose} onClick={handleModalClose}
+                       size="lg">
 
-                <Modal.Body>
-                    <img
-                        src={item}
-                        alt="Full size"
-                        className="custom_modal_img"
-                        style={{maxWidth: '100%', maxHeight: '100vh'}}
-                    />
-                </Modal.Body>
-            </Modal>
+                    <Modal.Body>
+                        <img
+                            src={item}
+                            alt="Full size"
+                            className="custom_modal_img"
+                            style={{maxWidth: '100%', maxHeight: '100vh'}}
+                        />
+                    </Modal.Body>
+                </Modal>
+            }
         </>
     );
 }

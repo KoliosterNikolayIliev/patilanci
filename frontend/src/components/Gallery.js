@@ -34,7 +34,6 @@ function Gallery({content}) {
             return projects;
         }
 
-        // TODO - stop requests when cached
         if (
             (content === 'images' && !images) ||
             (content === 'videos' && !videos) ||

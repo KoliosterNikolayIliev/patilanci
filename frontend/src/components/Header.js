@@ -13,8 +13,6 @@ function Header() {
     const navigate = useNavigate();
     const live_location = useLocation().pathname === "/live";
 
-    // TODO - add favicons etc...
-
     function handleClick() {
         changeLanguage()
         updateSize()
@@ -44,7 +42,6 @@ function Header() {
     });
 
     useEffect(() => {
-        // TODO - set live video in session storage
         getLiveVideo()
             .then(response => {
                 const data = response.data[0]

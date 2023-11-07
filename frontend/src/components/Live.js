@@ -1,6 +1,6 @@
 // src/LiveSection.js
 
-import React, {useContext, useState,} from 'react';
+import React, {useContext} from 'react';
 import {AppContext} from "../context/AppContext";
 import YouTubeIframeComponent from "./YouTubeIframe";
 import LogoLoader from "./LogoLoader";

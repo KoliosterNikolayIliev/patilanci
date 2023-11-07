@@ -8,19 +8,21 @@ function CarouselComponent() {
     const [err, setErr] = useState(false);
     const {carouselImages, setCarouselImages} = useContext(AppContext);
 
-    // TODO - in services
     const baseUrl = `${process.env.REACT_APP_API_BASE_URL}`
     useEffect(() => {
-        axios.get(baseUrl + `${process.env.REACT_APP_API_CAROUSEL}`)
-            .then(response => setCarouselImages(response.data))
-            .catch(error => setErr(true));
-    }, [setCarouselImages,baseUrl]);
+        if (!carouselImages) {
+            axios.get(baseUrl + `${process.env.REACT_APP_API_CAROUSEL}`)
+                .then(response => setCarouselImages(response.data))
+                .catch(error => setErr(true));
+        }
+
+    }, [carouselImages,setCarouselImages, baseUrl]);
 
     if (err) {
         console.log(err)
         return <div className={'inner_main_container'}>
-                <LogoLoader/>
-                </div>;
+            <LogoLoader/>
+        </div>;
     }
 
     if (carouselImages === null) {

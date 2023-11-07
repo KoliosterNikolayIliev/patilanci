@@ -23,8 +23,8 @@ const Live = () => {
         <div className={'base_container'}>
             {!iframeElement ? <LogoLoader/> :
 
-                <div style={{height: '40rem', width: '80%', display:'flex', alignItems:'center'}}>
-                    {/*<h4>{language === 'en' ? liveDescription : liveDescriptionBg}</h4>*/}
+                <div style={{height: '40rem', width: '80%', display:'flex', alignItems:'center', justifyContent:'center', flexWrap:'wrap'}}>
+                    <h4>{language === 'en' ? liveDescription : liveDescriptionBg}</h4>
                     <YouTubeIframeComponent
                         style={{height: '100%'}}
                         handleItemLoad={handleItemLoad}

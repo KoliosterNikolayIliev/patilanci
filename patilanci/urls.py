@@ -34,8 +34,11 @@ def catch_all(request, path):
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('main.urls', namespace='index')),
-                  # path('', render_react),
-                  re_path(r"^$", render_react),
+                  path('', render_react),
+                  path('projects', render_react),
+                  path('video-gallery', render_react)
+                  # re_path(r"^$", render_react),
+
                   # re_path(r"^(?:.*)/?$", render_react),
                   # re_path(r'^(?P<path>.*)/$', catch_all),
 

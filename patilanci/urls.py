@@ -17,12 +17,28 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.shortcuts import render, redirect
 from django.urls import path, include, re_path
 from django.contrib.staticfiles import views
+
+
+def render_react(request):
+    return render(request, "index.html")
+
+
+def catch_all(request, path):
+    # Redirect to the homepage or any other desired URL
+    return redirect('/')
+
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('main.urls', namespace='index')),
+                  # path('', render_react),
+                  re_path(r"^$", render_react),
+                  # re_path(r"^(?:.*)/?$", render_react),
+                  # re_path(r'^(?P<path>.*)/$', catch_all),
+
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:

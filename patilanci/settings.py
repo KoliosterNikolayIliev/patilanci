@@ -29,8 +29,8 @@ ALLOWED_HOSTS = ['*']
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4000",
     "http://localhost:3000",
-"http://localhost:8000",
-"http://localhost:3001"
+    "http://localhost:8000",
+    "http://localhost:3001"
 ]
 # CORS_ALLOW_ALL_ORIGINS = True
 
@@ -64,6 +64,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -78,7 +79,7 @@ ROOT_URLCONF = 'patilanci.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-         "DIRS": [os.path.join(BASE_DIR, "build")],
+        "DIRS": [os.path.join(BASE_DIR, "frontend/build")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,7 +93,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'patilanci.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -139,10 +139,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
-  # Tell Django where to look for React's static files (css, js)
-  os.path.join(BASE_DIR, "build/static"),
+    # Tell Django where to look for React's static files (css, js)
+    os.path.join(BASE_DIR, "frontend/build/static"),
 ]
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -40,7 +40,6 @@ urlpatterns = [
                   path('image-gallery', render_react),
                   path('live', render_react),
                   # re_path(r"^$", render_react),
-
                   # re_path(r"^(?:.*)/?$", render_react),
                   # re_path(r'^(?P<path>.*)/$', catch_all),
 

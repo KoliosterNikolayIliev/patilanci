@@ -3,15 +3,13 @@ import liveIcon from '../public/live_transperant.gif';
 import React, {useContext, useRef, useEffect} from 'react';
 import {Navbar, Nav, Container} from 'react-bootstrap';
 import {AppContext} from '../context/AppContext';
-import {Link, useLocation, useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import getLiveVideo from "../services/getLiveVideo"
 
 function Header() {
     const {language, changeLanguage} = React.useContext(AppContext);
     const {youtubeLink, setYoutubeLink, setLiveDescription, setLiveDescriptionBg} = useContext(AppContext);
     const containerRef = useRef(null);
-    const navigate = useNavigate();
-    const live_location = useLocation().pathname === "/live";
 
     function handleClick() {
         changeLanguage()

@@ -36,7 +36,9 @@ urlpatterns = [
                   path('', include('main.urls', namespace='index')),
                   path('', render_react),
                   path('projects', render_react),
-                  path('video-gallery', render_react)
+                  path('video-gallery', render_react),
+                  path('image-gallery', render_react),
+                  path('live', render_react),
                   # re_path(r"^$", render_react),
 
                   # re_path(r"^(?:.*)/?$", render_react),

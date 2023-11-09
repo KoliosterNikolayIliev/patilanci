@@ -35,11 +35,6 @@ function Header() {
         }
     });
 
-    useEffect(() => {
-        if (!youtubeLink && live_location) {
-            navigate('/');
-        }
-    });
 
     useEffect(() => {
         getLiveVideo()

@@ -168,8 +168,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # TODO
-# proc file
-# - add run build
 # test heroku
 # migrate db to heroku
 # domain

@@ -22,5 +22,4 @@ logs/
 .env
 
 .idea/
-main/migrations/
 static/

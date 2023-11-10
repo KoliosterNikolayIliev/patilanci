@@ -1,10 +1,39 @@
-from django.conf.global_settings import MEDIA_URL
-from django.shortcuts import render
+from time import sleep
+from main.models import Image, Video, ContactAndInfo, Play, LiveVideo
+from rest_framework import generics
+from main.serializers import ImageSerializer, VideoSerializer, ContactSerializer, PlaySerializer, LiveVideoSerializer
 
-from main.models import Image
+
+class CarouselAPIView(generics.ListAPIView):
+    queryset = Image.objects.filter(carousel=True)
+    serializer_class = ImageSerializer
+
+    # just for testing:
+    def get(self, request, *args, **kwargs):
+        sleep(1)
+        return super().get(request, *args, **kwargs)
 
 
-def some_view(request):
-    images = Image.objects.all()
-    images = [x.image.url for x in images]
-    return render(request, 'index.html', context={'images': images})
+class ImageGalleryAPIView(generics.ListAPIView):
+    queryset = Image.objects.filter(poster=False)
+    serializer_class = ImageSerializer
+
+
+class VideoGalleryAPIView(generics.ListAPIView):
+    queryset = Video.objects.all()
+    serializer_class = VideoSerializer
+
+
+class LiveVideoAPIView(generics.ListAPIView):
+    queryset = LiveVideo.objects.all()
+    serializer_class = LiveVideoSerializer
+
+
+class PlayAPIView(generics.ListAPIView):
+    queryset = Play.objects.all()
+    serializer_class = PlaySerializer
+
+
+class ContactAPIView(generics.ListAPIView):
+    queryset = ContactAndInfo.objects.all()
+    serializer_class = ContactSerializer

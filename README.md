@@ -1,3 +1,9 @@
-# Patilanci
-Website for a private theater
-(currently in development)
+# Ami da
+Website for private theater
+Includes:
+ - photos
+ - videos
+ - contacts
+ - live section
+ - descriptions
+

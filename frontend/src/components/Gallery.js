@@ -111,7 +111,8 @@ function Gallery({content}) {
                                 playNameBg={item.play_name_bg}
                                 descriptionBg={item.description_bg}
                                 content={content}
-                                date={item.next_play}
+                                dateBg={new Date(item.next_play).toLocaleString('bg-BG', {day: '2-digit',month: '2-digit', year: 'numeric',  hour: '2-digit', minute: '2-digit', hour12: false })}
+                                dateUs={new Date(item.next_play).toLocaleString('en-US', {day: '2-digit',month: '2-digit', year: 'numeric',  hour: '2-digit', minute: '2-digit', hour12: false })}
                             />
                         </Col>
                     ))}

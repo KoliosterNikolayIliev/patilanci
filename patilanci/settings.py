@@ -169,5 +169,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # TODO
 # test heroku
+# cloudinary
 # migrate db to heroku
+# create superuser
 # domain

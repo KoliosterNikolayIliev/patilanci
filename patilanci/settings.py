@@ -31,6 +31,18 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
 CORS_ALLOWED_ORIGINS = os.getenv('ALLOWED_ORIGINS').split(',')
 
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
@@ -84,7 +96,6 @@ if not DEBUG:
     SECURE_CONTENT_TYPE_NOSNIFF = True
     CORS_ORIGIN_ALLOW_ALL = False
 
-CORS_ORIGIN_WHITELIST = os.getenv('CORS_ORIGIN_WHITELIST').split(',')
 
 TEMPLATES = [
     {
@@ -167,9 +178,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# TODO
-# test heroku
-# cloudinary
-# migrate db to heroku
-# create superuser
-# domain

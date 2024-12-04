@@ -8,6 +8,7 @@ import Gallery from "./components/Gallery";
 import Contacts from "./components/Conatcts";
 import NoPage from "./components/NoPage";
 import Live from "./components/Live";
+import Garden from "./components/Garden";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                             <Route exact path="/projects" element={<Gallery content={'projects'}/>}/>
                             <Route exact path="/contacts" element={<Contacts/>}/>
                             <Route exact path="/live" element={<Live/>}/>
+                            <Route exact path="/gradinata" element={<Garden/>}/>
                             <Route path="*" element={<NoPage/>}/>
                         </Routes>
 

@@ -98,6 +98,9 @@ function Header() {
                                     </Nav.Link>
                                 </div>
                             )}
+                            {/*<Nav.Link as={Link} to={'/gradinata'}>*/}
+                            {/*    {language === 'en' ? 'The garden' : 'Градината'}*/}
+                            {/*</Nav.Link>*/}
                             <Nav.Link onClick={handleClick}>
                                 {language === 'en' ? 'БГ' : 'EN'}
                             </Nav.Link>

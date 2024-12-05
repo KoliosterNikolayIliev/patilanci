@@ -5,7 +5,7 @@ import {AppContext} from "../context/AppContext";
 import YouTubeIframeComponent from "./YouTubeIframe";
 
 
-function ContentCard({item, description, playName, playNameBg, descriptionBg, content, date}) {
+function ContentCard({item, description, playName, playNameBg, descriptionBg, content, dateBg, dateUs}) {
     const {language} = React.useContext(AppContext);
     const [isLoading, setIsLoading] = useState(true);
     //content==='images'?true:false
@@ -71,7 +71,7 @@ function ContentCard({item, description, playName, playNameBg, descriptionBg, co
                 </Card.Body>
                 {content === "projects" &&
                     <Card.Footer>
-                        <small className="text-muted">{date}</small>
+                        <small className="text-muted">{language === 'en' ? dateUs : dateBg}</small>
                     </Card.Footer>
                 }
             </Card>

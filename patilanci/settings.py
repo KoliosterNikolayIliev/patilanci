@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.getenv('DEBUG') == 'true' else False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
 CORS_ALLOWED_ORIGINS = os.getenv('ALLOWED_ORIGINS').split(',')
 
@@ -93,6 +93,19 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'patilanci.urls'
+
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = os.getenv('CORS_ORIGIN_WHITELIST').split(',')
 
 TEMPLATES = [
     {
@@ -173,3 +186,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# TODO
+# test heroku
+# cloudinary
+# migrate db to heroku
+# create superuser
+# domain

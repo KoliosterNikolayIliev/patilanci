@@ -1,11 +1,11 @@
 asgiref==3.6.0
 attrs==23.1.0
-autobahn==23.6.2
+autobahn==24.4.2
 Automat==22.10.0
 beautifulsoup4==4.11.2
 cffi==1.15.1
 constantly==15.1.0
-cryptography==42.0.4
+cryptography==41.0.7
 Django==4.1.13
 django-cors-headers==3.14.0
 django-extensions==3.2.1

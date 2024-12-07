@@ -38,6 +38,7 @@ urlpatterns = [
                   path('video-gallery', render_react),
                   path('image-gallery', render_react),
                   path('live', render_react),
+                  path('gradinata', render_react),
                   # re_path(r"^$", render_react),
                   # re_path(r"^(?:.*)/?$", render_react),
                   # re_path(r'^(?P<path>.*)/$', catch_all),

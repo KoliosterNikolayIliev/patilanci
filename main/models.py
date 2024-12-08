@@ -72,3 +72,21 @@ class NextLiveVideo(models.Model):
     date = models.DateTimeField(blank=False)
     live_video_is_playing = models.BooleanField(default=False, blank=False)
 
+
+class CharityPageData(models.Model):
+    heading_bg = models.CharField(max_length=255, blank=True, null=True)
+    heading_en = models.CharField(max_length=255, blank=True, null=True)
+    main_text_bg = models.TextField(blank=True, null=True)
+    main_text_en = models.TextField(blank=True, null=True)
+    picture = models.ImageField(upload_to='images/')
+    embedded_video = models.TextField(blank=False)
+    payment_heading_bg = models.CharField(max_length=255, blank=True, null=True)
+    payment_heading_en = models.CharField(max_length=255, blank=True, null=True)
+    payment_text_bg = models.TextField(blank=True, null=True)
+    payment_text_en = models.TextField(blank=True, null=True)
+    payment_info_bg = models.CharField(max_length=255, blank=True, null=True)
+    payment_info_en = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = 'Charity page data'
+

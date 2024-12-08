@@ -8,7 +8,7 @@ import Gallery from "./components/Gallery";
 import Contacts from "./components/Conatcts";
 import NoPage from "./components/NoPage";
 import Live from "./components/Live";
-import Garden from "./components/Garden";
+import Garden from "./components/Garden/Garden";
 
 
 function App() {

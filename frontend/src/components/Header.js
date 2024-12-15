@@ -114,8 +114,10 @@ function Header() {
                                     </Nav.Link>
                                 </div>
                             )}
+
                             {
-                                charityData.length && charityData[0].charity_tab_active > 0 && (
+                                (charityData.length > 0 && charityData[0].charity_tab_active) && (
+
                                     <Nav.Link as={Link} to={'/charity'}>
                                         {language === 'en'
                                             ? charityData[0].charity_link_name_en

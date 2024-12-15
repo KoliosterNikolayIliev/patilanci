@@ -15,7 +15,7 @@ function Charity() {
             setDataIsLoaded(false);
         }
 
-    }, );
+    }, [charityData.length]);
 
     const parser = dataIsLoaded ? new DOMParser():undefined;
     const doc = dataIsLoaded ? parser.parseFromString(charityData[0].embedded_video, 'text/html'):undefined;

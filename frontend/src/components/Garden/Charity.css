@@ -26,18 +26,20 @@
 /*}*/
 
 .aligned-left {
-  max-width: 800px; /* Maximum width for the block */
+  max-width: 50%; /* Maximum width for the block */
   margin: 0 auto;   /* Center the entire container horizontally */
   text-align: center; /* Center the header text inside */
+    display: flex;
+    flex-direction: column;
 }
 
 .aligned-left div {
   text-align: left;  /* Align each inner line to the left */
-  margin-left: auto; /* Push the text inward to the center */
-  margin-right: auto;
-  display: block;    /* Ensure each line is treated as a block */
-  max-width: 515px;  /* Limit the width of the inner text */
-  padding-left: 9rem; /* Add an indent for uniform alignment */
+  /*margin-left: auto; !* Push the text inward to the center *!*/
+  /*margin-right: auto;*/
+  /*display: block;    !* Ensure each line is treated as a block *!*/
+  /*max-width: 515px;  !*!* Limit the width of the inner text *!*!*/
+  /*padding-left: 9rem; !* Add an indent for uniform alignment *!*/
 }
 
 .base_container img {
@@ -82,5 +84,8 @@
     .video-container {
         max-width: 100%;     /* Adjust for mobile */
         aspect-ratio: 16 / 9;
+    }
+    .aligned-left {
+        max-width: 90%;
     }
 }
